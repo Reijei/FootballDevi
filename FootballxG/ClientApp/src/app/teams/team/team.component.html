@@ -1,0 +1,69 @@
+<form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
+  <div class="form-row">
+      <div class="col-md-6">
+    <div class="form-group">
+      <label>Teamname</label>
+        <input name="TeamName" #TeamName="ngModel" [(ngModel)]="service.formData.TeamName" class="form-control" [class.is-invalid]="!isValid">
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>Wins</label>
+        <input name="Wins" #Wins="ngModel" [(ngModel)]="service.formData.Wins" class="form-control">
+    </div>
+  </div>
+  </div>
+  <div class="form-row">
+      <div class="col-md-4">
+    <div class="form-group">
+      <label>Loses</label>
+        <input name="Loses" #Loses="ngModel" [(ngModel)]="service.formData.Loses" class="form-control">
+    </div>
+  </div>
+    <div class="col-md-4">
+    <div class="form-group">
+      <label>Serie</label>
+        <input name="Serie" #Serie="ngModel" [(ngModel)]="service.formData.Serie" class="form-control">
+    </div>
+  </div>
+    <div class="col-md-4">
+    <div class="form-group">
+      <label>Position</label>
+        <input name="Position" #Position="ngModel" [(ngModel)]="service.formData.Position" class="form-control">
+    </div>
+  </div>
+  </div>
+<table class="table table-borderless">
+  <thead class="thead-light">
+    <th>Playername</th>
+    <th>No</th>
+    <th>Position</th>
+    <th>Goals</th>
+    <th>Passes</th>
+    <th>xG</th>
+    <th><a class="btn btn-sm btn-success text-white" (click)="AddOrEditPlayer(null, service.formData.TeamID)"><i class="fa fa-plus"></i> Add Player</a>
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngIf="service.playersData.length==0">
+      <td class="font-italic text-center" colspan="5">
+        No Players found.
+      </td>
+    </tr>
+    <tr *ngFor="let player of service.playersData; let i=index;">
+      <td>{{player.PlayerName}}</td>
+      <td>{{player.No}}</td>
+      <td>{{player.Position}}</td>
+      <td>{{player.Goals}}</td>
+      <td>{{player.Passes}}</td>
+      <td>{{player.Xg}}</td>
+      <td><a class="btn btn-sm btn-info text-white" (click)="AddOrEditPlayer(i, service.formData.TeamID)"><i class="fa fa-pencil"></i></a>
+        <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeletePlayer(player.PlayerID)"><i class="fa fa-trash"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="form-group">
+  <button type="submit" class="btn btn-dark">Submit</button>
+</div>
+</form>

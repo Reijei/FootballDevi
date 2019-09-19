@@ -13,6 +13,9 @@ import { UserService } from './shared/user.service';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { TeamsComponent } from './teams/teams.component';
+import { TeamComponent } from './teams/team/team.component';
+import { PlayerComponent } from './teams/player/player.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     UserComponent,
     RegistrationComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    TeamsComponent,
+    TeamComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,

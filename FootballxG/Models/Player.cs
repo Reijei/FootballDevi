@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FootballxG.Models
 {
-    public class PlayerModel
+    public class Player
     {
         [Key]
         public int PlayerID { get; set; }

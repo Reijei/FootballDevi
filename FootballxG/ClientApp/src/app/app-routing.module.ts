@@ -5,6 +5,8 @@ import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
+import { TeamsComponent } from './teams/teams.component';
+import { TeamComponent } from './teams/team/team.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/user/login',pathMatch:'full'},
@@ -15,7 +17,12 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent }
     ]
   },
-  {path:'home',component:HomeComponent,canActivate:[AuthGuard]}
+  {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
+  {path: 'teams', component: TeamsComponent},
+  {path: 'team', children: [
+    {path: '', component: TeamComponent},
+    {path: 'edit/:id', component: TeamComponent}
+  ]},
 ];
 
 @NgModule({
