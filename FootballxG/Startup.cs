@@ -34,6 +34,9 @@ namespace FootballxG
             services.AddDbContext<AuthenticationContext>(options =>
          options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
+            services.AddDbContext<DataDbContext>(options =>
+options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+
             services.AddDefaultIdentity<ApplicationUser>()
         .AddEntityFrameworkStores<AuthenticationContext>();
 
