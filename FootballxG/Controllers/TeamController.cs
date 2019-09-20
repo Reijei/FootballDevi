@@ -31,14 +31,44 @@ namespace FootballxG.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Team>> GetTeam(int id)
         {
-            var team = await _context.Team.FindAsync(id);
+            var team = (from a in _context.Team
+                        where a.TeamID == id
 
-            if (team == null)
-            {
-                return NotFound();
-            }
+                        select new
+                        {
+                            a.TeamID,
+                            a.TeamName,
+                            a.Wins,
+                            a.Loses,
+                            a.Serie,
+                            a.Position,
+                            DeletedOrderItemIds = ""
+                        }).FirstOrDefault();
+            var players = (from a in _context.Player
+                           where a.TeamID == id
 
-            return team;
+                           select new
+                           {
+                               a.PlayerID,
+                               a.TeamID,
+                               a.PlayerName,
+                               a.No,
+                               a.Position,
+                               a.Matches,
+                               a.Minutes,
+                               a.Goals,
+                               a.Passes,
+                               a.Spots,
+                               a.CardYellow,
+                               a.CardRed,
+                               a.Xg,
+                               a.XgP,
+                               a.Xa,
+                               a.XaP,
+                               a.Xg90,
+                               a.Xa90
+                           }).ToList();
+            return Ok(new { team, players });
         }
 
         // PUT: api/Team/5

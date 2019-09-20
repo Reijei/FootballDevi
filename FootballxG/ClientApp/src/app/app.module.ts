@@ -4,6 +4,8 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +35,7 @@ import { PlayerComponent } from './teams/player/player.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       progressBar: true

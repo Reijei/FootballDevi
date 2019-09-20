@@ -18,9 +18,19 @@ export class TeamsComponent implements OnInit {
   ngOnInit() {
     this.refreshList();
   }
+
   refreshList() {
     this.service.getTeamList().then(res => this.teamList = res);
 
+  }
+
+  onOrderDelete(id: number) {
+    if (confirm('Are you sure to delete this record?')) {
+      this.service.deleteTeam(id).then(res => {
+        this.refreshList();
+        this.toaster.warning("Deleted Successfully", "Restaurent App.");
+      });
+    }
   }
 
 }
