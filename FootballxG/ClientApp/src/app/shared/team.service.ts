@@ -13,6 +13,17 @@ export class TeamService {
   constructor(private http: HttpClient) { }
 
 
+
+  saveOrUpdate() {
+    var body = {
+      ...this.formData,
+      Player: this.playersData
+    }
+    console.log(body);
+    return this.http.post(environment.apiURL + '/Team', body)
+  }
+
+
   getTeamList() {
     return this.http.get(environment.apiURL + '/Team').toPromise();
   }

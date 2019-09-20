@@ -24,6 +24,10 @@ export class TeamsComponent implements OnInit {
 
   }
 
+  openForEdit(TeamID: number) {
+    this.router.navigate(['/team/edit/' + TeamID]);
+  }
+
   onOrderDelete(id: number) {
     if (confirm('Are you sure to delete this record?')) {
       this.service.deleteTeam(id).then(res => {

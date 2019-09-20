@@ -105,26 +105,61 @@ namespace FootballxG.Controllers
         [HttpPost]
         public async Task<ActionResult<Team>> PostTeam(Team team)
         {
-            _context.Team.Add(team);
-            await _context.SaveChangesAsync();
+            try
+            {
 
-            return CreatedAtAction("GetTeam", new { id = team.TeamID }, team);
+
+                if (team.TeamID == null)
+                {
+                    _context.Team.Add(team);
+
+                }
+                else
+                {
+                    _context.Entry(team).State = EntityState.Modified;
+                }
+                foreach (var item in team.Player)
+                {
+                    if (item.PlayerID != 0)
+                    {
+                        _context.Player.Add(item);
+
+                    }
+                    else
+                    {
+                        _context.Entry(item).State = EntityState.Modified;
+                    }
+
+                }
+
+
+                _context.SaveChanges();
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         // DELETE: api/Team/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Team>> DeleteTeam(int id)
         {
-            var team = await _context.Team.FindAsync(id);
-            if (team == null)
+            Team team = _context.Team.Include(y => y.Player)
+            .SingleOrDefault(x => x.TeamID == id);
+
+            foreach (var item in team.Player.ToList())
             {
-                return NotFound();
+                _context.Player.Remove(item);
             }
 
             _context.Team.Remove(team);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
-            return team;
+            return Ok(team);
         }
 
         private bool TeamExists(int id)

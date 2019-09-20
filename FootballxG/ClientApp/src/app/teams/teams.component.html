@@ -5,15 +5,15 @@
   <th>Position</th>
   <th>Wins</th>
   <th>Loses</th>
-  <th><a class="btn btn-outline-success">Create new</a></th>
+  <th><a class="btn btn-outline-success" routerLink="/team">Create new</a></th>
   </thead>
   <tbody>
     <tr *ngFor="let team of teamList">
-      <td>{{team.TeamName}}</td>
-      <td>{{team.Serie}}</td>
-      <td>{{team.Position}}</td>
-      <td>{{team.Wins}}</td>
-      <td>{{team.Loses}}</td>
+      <td (click)="openForEdit(team.TeamID)">{{team.TeamName}}</td>
+      <td (click)="openForEdit(team.TeamID)">{{team.Serie}}</td>
+      <td (click)="openForEdit(team.TeamID)">{{team.Position}}</td>
+      <td (click)="openForEdit(team.TeamID)">{{team.Wins}}</td>
+      <td (click)="openForEdit(team.TeamID)">{{team.Loses}}</td>
       <td>
         <a class="btn text-danger" (click)="onOrderDelete(team.TeamID)"><i class="fa fa-trash fa-lg"></i></a>
       </td>

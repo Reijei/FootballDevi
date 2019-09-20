@@ -4,14 +4,16 @@ using FootballxG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FootballxG.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190920090952_foreignkey")]
+    partial class foreignkey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +49,7 @@ namespace FootballxG.Migrations
 
                     b.Property<int?>("Spots");
 
-                    b.Property<int?>("TeamID");
+                    b.Property<int>("TeamID");
 
                     b.Property<double?>("Xa");
 
@@ -93,9 +95,10 @@ namespace FootballxG.Migrations
 
             modelBuilder.Entity("FootballxG.Models.Player", b =>
                 {
-                    b.HasOne("FootballxG.Models.Team", "Team")
-                        .WithMany("Player")
-                        .HasForeignKey("TeamID");
+                    b.HasOne("FootballxG.Models.Team", "team")
+                        .WithMany()
+                        .HasForeignKey("TeamID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

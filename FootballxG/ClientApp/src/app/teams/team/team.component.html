@@ -1,4 +1,4 @@
-<form #form="ngForm" autocomplete="off" *ngIf="service.formData">
+<form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
   <div class="form-row">
       <div class="col-md-6">
     <div class="form-group">
@@ -57,8 +57,8 @@
       <td>{{player.Goals}}</td>
       <td>{{player.Passes}}</td>
       <td>{{player.Xg}}</td>
-      <td><a class="btn btn-sm btn-info text-white"><i class="fa fa-pencil"></i></a>
-        <a class="btn btn-sm btn-danger text-white ml-1"><i class="fa fa-trash"></i></a>
+      <td><a class="btn btn-sm btn-info text-white" (click)="AddOrEditPlayer(i, service.formData.TeamID)"><i class="fa fa-pencil"></i></a>
+        <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeletePlayer(player.PlayerID)"><i class="fa fa-trash"></i></a>
       </td>
     </tr>
   </tbody>

@@ -62,4 +62,39 @@ export class TeamComponent implements OnInit {
     this.service.playersData = [];
   }
 
+
+  onDeletePlayer(PlayerID: number) {
+    if (confirm('Are you sure to delete this record?')) {
+      this.playerService.deletePlayer(PlayerID).then(res => {
+        this.toaster.warning("Deleted Successfully", "Restaurent App.");
+        this.reloadComponent();
+      });
+    }
+  }
+
+  onSubmit(form: NgForm) {
+    if (this.validateForm()) {
+      this.service.saveOrUpdate().subscribe(res => {
+        this.resetForm();
+        this.toaster.success('Submitted succesfully', 'FootballxG App.');
+        this.router.navigate(['/teams']);
+      })
+    }
+  }
+
+
+  validateForm() {
+    this.isValid = true;
+    if (this.service.formData.TeamName == '') {
+      this.isValid = false;
+    }
+    return this.isValid;
+  }
+
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/team/edit/' + this.Id]);
+  }
+
 }

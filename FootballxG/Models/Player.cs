@@ -10,8 +10,8 @@ namespace FootballxG.Models
     public class Player
     {
         [Key]
-        public int PlayerID { get; set; }
-        public int TeamID { get; set; }
+        public int? PlayerID { get; set; }
+        public int? TeamID { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         public string PlayerName { get; set; }
         public int? No { get; set; }
@@ -31,6 +31,10 @@ namespace FootballxG.Models
         public double? Xg90 { get; set; }
         public double? Xa90 { get; set; }
 
-      
+
+
+        public Team Team { get; set; }
+
+
     }
 }
