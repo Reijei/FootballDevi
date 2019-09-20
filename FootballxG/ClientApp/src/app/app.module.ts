@@ -42,6 +42,7 @@ import { PlayerComponent } from './teams/player/player.component';
     }),
     FormsModule
   ],
+  entryComponents: [PlayerComponent],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
