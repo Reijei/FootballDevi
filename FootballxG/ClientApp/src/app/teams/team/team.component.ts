@@ -97,4 +97,8 @@ export class TeamComponent implements OnInit {
     this.router.navigate(['/team/edit/' + this.Id]);
   }
 
+  redirectBack() {
+    this.router.navigate(['/teams']);
+  }
+
 }
