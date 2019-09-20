@@ -24,12 +24,12 @@ namespace FootballxG.Models
         public int? Spots { get; set; }
         public int? CardYellow { get; set; }
         public int? CardRed { get; set; }
-        public double? Xg { get; set; }
-        public double? XgP { get; set; }
-        public double? Xa { get; set; }
-        public double? XaP { get; set; }
-        public double? Xg90 { get; set; }
-        public double? Xa90 { get; set; }
+        public float? Xg { get; set; }
+        public float? XgP { get; set; }
+        public float? Xa { get; set; }
+        public float? XaP { get; set; }
+        public float? Xg90 { get; set; }
+        public float? Xa90 { get; set; }
 
 
 
