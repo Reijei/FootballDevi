@@ -37,6 +37,15 @@ export class TeamComponent implements OnInit {
     }
   }
 
+  AddOrEditPlayer(playerIndex, TeamID) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width="50%";
+    dialogConfig.data = {playerIndex, TeamID};
+    this.dialog.open(PlayerComponent, dialogConfig);
+  }
+
 
   resetForm(form?:NgForm) {
     if( form = null ) {
