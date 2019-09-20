@@ -12,11 +12,11 @@ namespace FootballxG.Models
         [Key]
         public int TeamID { get; set; }
         public string TeamName { get; set; }
-        public int Wins { get; set; }
-        public int Loses { get; set; }
+        public int? Wins { get; set; }
+        public int? Loses { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         public string Serie { get; set; }
-        public int Position { get; set; }
+        public int? Position { get; set; }
 
 
 

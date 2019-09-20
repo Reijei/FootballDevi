@@ -8,11 +8,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TeamService {
+  formData: Team;
+
+  constructor(private http: HttpClient) { }
 
 
-  constructor() { }
-
-
-
+  getTeamList() {
+    return this.http.get(environment.apiURL + '/Team').toPromise();
+  }
 
 }

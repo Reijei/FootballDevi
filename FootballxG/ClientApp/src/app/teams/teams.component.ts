@@ -9,13 +9,18 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./teams.component.css']
 })
 export class TeamsComponent implements OnInit {
+  teamList;
 
-
-  constructor() { }
+  constructor(private service: TeamService,
+    private router: Router,
+    private toaster: ToastrService) { }
 
   ngOnInit() {
+    this.refreshList();
+  }
+  refreshList() {
+    this.service.getTeamList().then(res => this.teamList = res);
 
   }
-
 
 }
