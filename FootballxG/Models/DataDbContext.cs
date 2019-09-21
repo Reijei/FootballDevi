@@ -15,10 +15,11 @@ namespace FootballxG.Models
 
         public DbSet<Player> Player { get; set; }
         public DbSet<Team> Team { get; set; }
+        public DbSet<Shot> Shot { get; set; }
+        public DbSet<Match> Match { get; set; }
+        public DbSet<Practise> Practise { get; set; }
 
-        public DbSet<MatchModel> MatchModel { get; set; }
-        public DbSet<PractiseModel> PractiseModel { get; set; }
-        public DbSet<ShotModel> ShotModel { get; set; }
+
 
 
     }

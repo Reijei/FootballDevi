@@ -1,1 +1,134 @@
-<p>match works!</p>
+<form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
+  <div class="form-row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Home team</label>
+          <input name="HomeName" #HomeName="ngModel" [(ngModel)]="service.formData.HomeName" class="form-control" [class.is-invalid]="!isValid">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Away team</label>
+          <input name="AwayName" #AwayName="ngModel" [(ngModel)]="service.formData.AwayName" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>HomeGoals</label>
+          <input name="HomeGoals" #HomeGoals="ngModel" [(ngModel)]="service.formData.HomeGoals" class="form-control" [class.is-invalid]="!isValid">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>AwayGoals</label>
+          <input name="AwayGoals" #AwayGoals="ngModel" [(ngModel)]="service.formData.AwayGoals" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>HomeCorners</label>
+          <input name="HomeCorners" #HomeCorners="ngModel" [(ngModel)]="service.formData.HomeCorners" class="form-control" [class.is-invalid]="!isValid">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>AwayCorners</label>
+          <input name="AwayCorners" #AwayCorners="ngModel" [(ngModel)]="service.formData.AwayCorners" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>HomeSide</label>
+          <input name="HomeSide" #HomeSide="ngModel" [(ngModel)]="service.formData.HomeSide" class="form-control" [class.is-invalid]="!isValid">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>AwaySide</label>
+          <input name="AwaySide" #AwaySide="ngModel" [(ngModel)]="service.formData.AwaySide" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>HomeFree</label>
+          <input name="HomeFree" #HomeFree="ngModel" [(ngModel)]="service.formData.HomeFree" class="form-control" [class.is-invalid]="!isValid">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>AwayFree</label>
+          <input name="AwayFree" #AwayFree="ngModel" [(ngModel)]="service.formData.AwayFree" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>HomeTotal</label>
+          <input name="HomeTotal" #HomeTotal="ngModel" [(ngModel)]="service.formData.HomeTotal" class="form-control" [class.is-invalid]="!isValid">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>AwayTotal</label>
+          <input name="AwayTotal" #AwayTotal="ngModel" [(ngModel)]="service.formData.AwayTotal" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>HomeXg</label>
+          <input name="HomeXg" #HomeXg="ngModel" [(ngModel)]="service.formData.HomeXg" class="form-control" [class.is-invalid]="!isValid">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>AwayXg</label>
+          <input name="AwayXg" #AwayXg="ngModel" [(ngModel)]="service.formData.AwayXg" class="form-control">
+        </div>
+      </div>
+    </div>
+  <table class="table table-borderless">
+    <thead class="thead-light">
+      <th>Playername</th>
+      <th>No</th>
+      <th>Position</th>
+      <th>Goals</th>
+      <th>Passes</th>
+      <th>xG</th>
+      <th><a class="btn btn-sm btn-success text-white" (click)="EditShot(null, service.formData.MatchID)"><i class="fa fa-plus"></i> Add Player</a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngIf="service.shotData.length==0">
+        <td class="font-italic text-center" colspan="5">
+          No shots found.
+        </td>
+      </tr>
+      <tr *ngFor="let item of service.shotData; let i=index;">
+        <td>{{item.ShooterName}}</td>
+        <td>{{item.Assist}}</td>
+        <td>{{item.Result}}</td>
+        <td>{{item.Half}}</td>
+        <td>{{item.Xg}}</td>
+        <td>{{item.Comments}}</td>
+        <td><a class="btn btn-sm btn-info text-white" (click)="EditShot(i, service.formData.MatchID)"><i class="fa fa-pencil"></i></a>
+          <a class="btn btn-sm btn-danger text-white ml-1"><i class="fa fa-trash"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="form-group">
+    <button type="submit" class="btn btn-sm btn-success text-white">Submit</button>
+    <button class="btn btn-sm btn-success text-white ml-1">Back</button>
+  </div>
+</form>

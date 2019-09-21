@@ -48,7 +48,7 @@ import { ShotComponent } from './matches/shot/shot.component';
     }),
     FormsModule
   ],
-  entryComponents: [PlayerComponent],
+  entryComponents: [PlayerComponent, ShotComponent],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

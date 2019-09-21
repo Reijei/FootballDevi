@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FootballxG.Models
 {
-    public class ShotModel
+    public class Shot
     {
         [Key]
         public int? ShotID { get; set; }
@@ -22,14 +22,14 @@ namespace FootballxG.Models
         public string Opponent { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         public string Assist { get; set; }
-        public double PositionX { get; set; }
-        public double PositionY { get; set; }
+        public double? PositionX { get; set; }
+        public double? PositionY { get; set; }
         [Column(TypeName = "nvarchar(10)")]
         public string BodyPart { get; set; }
         [Column(TypeName = "nvarchar(10)")]
         public string Result { get; set; }
         [Column(TypeName = "nvarchar(10)")]
-        public string Cross { get; set; }
+        public string Breakway { get; set; }
         [Column(TypeName = "nvarchar(10)")]
         public string Pattern { get; set; }
         [Column(TypeName = "nvarchar(10)")]
@@ -42,11 +42,12 @@ namespace FootballxG.Models
         public string Comments { get; set; }
 
 
-        public int? TeamID { get; set; }
+        public int? MatchID { get; set; }
         public int? PractiseID { get; set; }
 
-        public MatchModel MatchModel { get; set; }
-        public PractiseModel PractiseModel { get; set; }
+        public Match Match { get; set; }
+
+
 
 
     }

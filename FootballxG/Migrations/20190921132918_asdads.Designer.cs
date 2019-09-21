@@ -4,14 +4,16 @@ using FootballxG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FootballxG.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190921132918_asdads")]
+    partial class asdads
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace FootballxG.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FootballxG.Models.Match", b =>
+            modelBuilder.Entity("FootballxG.Models.MatchModel", b =>
                 {
                     b.Property<int?>("MatchID")
                         .ValueGeneratedOnAdd()
@@ -59,7 +61,7 @@ namespace FootballxG.Migrations
 
                     b.HasKey("MatchID");
 
-                    b.ToTable("Match");
+                    b.ToTable("MatchModel");
                 });
 
             modelBuilder.Entity("FootballxG.Models.Player", b =>
@@ -111,7 +113,7 @@ namespace FootballxG.Migrations
                     b.ToTable("Player");
                 });
 
-            modelBuilder.Entity("FootballxG.Models.Practise", b =>
+            modelBuilder.Entity("FootballxG.Models.PractiseModel", b =>
                 {
                     b.Property<int?>("PractiseID")
                         .ValueGeneratedOnAdd()
@@ -136,10 +138,10 @@ namespace FootballxG.Migrations
 
                     b.HasKey("PractiseID");
 
-                    b.ToTable("Practise");
+                    b.ToTable("PractiseModel");
                 });
 
-            modelBuilder.Entity("FootballxG.Models.Shot", b =>
+            modelBuilder.Entity("FootballxG.Models.ShotModel", b =>
                 {
                     b.Property<int?>("ShotID")
                         .ValueGeneratedOnAdd()
@@ -198,7 +200,7 @@ namespace FootballxG.Migrations
 
                     b.HasKey("ShotID");
 
-                    b.ToTable("Shot");
+                    b.ToTable("ShotModel");
                 });
 
             modelBuilder.Entity("FootballxG.Models.Team", b =>

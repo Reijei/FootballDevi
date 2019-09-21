@@ -1,1 +1,118 @@
-<p>shot works!</p>
+<h4 class="display-4">Shot</h4>
+<hr>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <input type="hidden" name="ShotID" #ShotID="ngModel" [(ngModel)]="formData.ShotID">
+  <input type="hidden" name="MatchID" #MatchID="ngModel" [(ngModel)]="formData.MatchID">
+  <input type="hidden" name="PractiseID" #PractiseID="ngModel" [(ngModel)]="formData.PractiseID">
+  <div class="form-row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Time</label>
+        <input name="Time" #Time="ngModel" [(ngModel)]="formData.Time" class="form-control" [class.is-invalid]="!isValid">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Half</label>
+        <input name="Half" #Half="ngModel" [(ngModel)]="formData.Half" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>ShooterName</label>
+        <input name="ShooterName" #ShooterName="ngModel" [(ngModel)]="formData.ShooterName" class="form-control">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Assist</label>
+        <input name="Assist" #Assist="ngModel" [(ngModel)]="formData.Assist" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>PositionX</label>
+        <input name="PositionX" #PositionX="ngModel" [(ngModel)]="formData.PositionX" class="form-control">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>PositionY</label>
+        <input name="PositionY" #PositionY="ngModel" [(ngModel)]="formData.PositionY" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>BodyPart</label>
+        <input name="BodyPart" #BodyPart="ngModel" [(ngModel)]="formData.BodyPart" class="form-control">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Result</label>
+        <input name="Result" #Result="ngModel" [(ngModel)]="formData.Result" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Breakway</label>
+        <input name="Breakway" #Breakway="ngModel" [(ngModel)]="formData.Breakway" class="form-control">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Pattern</label>
+        <input name="Pattern" #Pattern="ngModel" [(ngModel)]="formData.Pattern" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>BigChange</label>
+        <input name="BigChange" #BigChange="ngModel" [(ngModel)]="formData.BigChange" class="form-control">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>NoChange</label>
+        <input name="NoChange" #NoChange="ngModel" [(ngModel)]="formData.NoChange" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Defenders</label>
+        <input name="Defenders" #Defenders="ngModel" [(ngModel)]="formData.Defenders" class="form-control">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Xg</label>
+        <input name="Xg" #Xg="ngModel" [(ngModel)]="formData.Xg" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Comments</label>
+        <input name="Comments" #Comments="ngModel" [(ngModel)]="formData.Comments" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark">Submit</button>
+    <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]>Close</button>
+
+  </div>
+</form>

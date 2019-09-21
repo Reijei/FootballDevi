@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FootballxG.Models
 {
-    public class PractiseModel
+    public class Practise
     {
         [Key]
         public int? PractiseID { get; set; }
@@ -20,8 +20,5 @@ namespace FootballxG.Models
         public int? Free { get; set; }
         public int? Total { get; set; }
         public float? Xg { get; set; }
-
-
-        public List<ShotModel> ShotModel { get; set; }
     }
 }
