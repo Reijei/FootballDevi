@@ -71,6 +71,15 @@ export class MatchComponent implements OnInit {
     }
   }
 
+  onDeleteShot(ShotID: number) {
+    if (confirm('Are you sure to delete this record?')) {
+      this.shotService.deleteShot(ShotID).then(res => {
+        this.toaster.warning("Deleted Successfully", "Restaurent App.");
+        this.reloadComponent();
+      });
+    }
+  }
+
 
 
   EditShot(shotIndex, MatchID) {

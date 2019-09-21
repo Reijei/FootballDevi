@@ -31,14 +31,56 @@ namespace FootballxG.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Match>> GetMatch(int? id)
         {
-            var match = await _context.Match.FindAsync(id);
+            var match = (from a in _context.Match
+                        where a.MatchID == id
 
-            if (match == null)
-            {
-                return NotFound();
-            }
+                        select new
+                        {
+                            a.MatchID,
+                            a.DateTime,
+                            a.HomeName,
+                            a.AwayName,
+                            a.HomeGoals,
+                            a.AwayGoals,
+                            a.HomeCorners,
+                            a.AwayCorners,
+                            a.HomeSide,
+                            a.AwaySide,
+                            a.HomeFree,
+                            a.AwayFree,
+                            a.HomeTotal,
+                            a.AwayTotal,
+                            a.HomeXg,
+                            a.AwayXg,
+                        }).FirstOrDefault();
+            var shot = (from a in _context.Shot
+                           where a.MatchID == id
 
-            return match;
+                           select new
+                           {
+                               a.ShotID,
+                               a.DateTime,
+                               a.Time,
+                               a.Half,
+                               a.ShooterName,
+                               a.TeamName,
+                               a.Opponent,
+                               a.Assist,
+                               a.PositionX,
+                               a.PositionY,
+                               a.BodyPart,
+                               a.Result,
+                               a.Breakway,
+                               a.Pattern,
+                               a.BigChange,
+                               a.NoChange,
+                               a.Defenders,
+                               a.Xg,
+                               a.Comments,
+                               a.MatchID,
+                               a.PractiseID,
+                           }).ToList();
+            return Ok(new { match, shot });
         }
 
         // PUT: api/Match/5

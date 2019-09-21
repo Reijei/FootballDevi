@@ -18,7 +18,7 @@ export class MatchService {
   saveOrUpdateMatch() {
     var body = {
       ...this.formData,
-      Player: this.shotData
+      Shot: this.shotData
     }
     console.log(body);
     return this.http.post(environment.apiURL + '/Match', body)
