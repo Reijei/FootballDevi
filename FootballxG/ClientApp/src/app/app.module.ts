@@ -18,6 +18,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamComponent } from './teams/team/team.component';
 import { PlayerComponent } from './teams/player/player.component';
+import { MatchesComponent } from './matches/matches.component';
+import { MatchComponent } from './matches/match/match.component';
+import { ShotComponent } from './matches/shot/shot.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { PlayerComponent } from './teams/player/player.component';
     HomeComponent,
     TeamsComponent,
     TeamComponent,
-    PlayerComponent
+    PlayerComponent,
+    MatchesComponent,
+    MatchComponent,
+    ShotComponent
   ],
   imports: [
     BrowserModule,

@@ -4,14 +4,16 @@ using FootballxG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FootballxG.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190921065134_NewTables1")]
+    partial class NewTables1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +42,7 @@ namespace FootballxG.Migrations
 
                     b.Property<float?>("AwayXg");
 
-                    b.Property<DateTime?>("DateTime");
+                    b.Property<DateTime>("DateTime");
 
                     b.Property<int?>("HomeCorners");
 
@@ -119,7 +121,7 @@ namespace FootballxG.Migrations
 
                     b.Property<int?>("Corners");
 
-                    b.Property<DateTime?>("DateTime");
+                    b.Property<DateTime>("DateTime");
 
                     b.Property<int?>("Free");
 
@@ -160,7 +162,7 @@ namespace FootballxG.Migrations
                     b.Property<string>("Cross")
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<DateTime?>("DateTime");
+                    b.Property<DateTime>("DateTime");
 
                     b.Property<int?>("Defenders");
 

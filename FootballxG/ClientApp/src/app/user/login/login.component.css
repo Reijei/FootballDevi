@@ -1,5 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
 body {
   background-color: #04c582;
+  ;
 }
 
 input.form-control, input.form-control:focus {
@@ -92,3 +94,4 @@ div.form-group label:first-child {
   text-transform: uppercase;
   font-size: 0.9rem;
 }
+
