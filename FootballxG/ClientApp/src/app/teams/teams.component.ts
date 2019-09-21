@@ -32,7 +32,7 @@ export class TeamsComponent implements OnInit {
     if (confirm('Are you sure to delete this record?')) {
       this.service.deleteTeam(id).then(res => {
         this.refreshList();
-        this.toaster.warning("Deleted Successfully", "Restaurent App.");
+        this.toaster.warning("Deleted Successfully", "Football xG");
       });
     }
   }

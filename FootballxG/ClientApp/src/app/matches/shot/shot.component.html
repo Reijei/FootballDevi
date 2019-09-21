@@ -1,9 +1,13 @@
+<mat-dialog-content>
 <h4 class="display-4">Shot</h4>
 <hr>
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
   <input type="hidden" name="ShotID" #ShotID="ngModel" [(ngModel)]="formData.ShotID">
   <input type="hidden" name="MatchID" #MatchID="ngModel" [(ngModel)]="formData.MatchID">
   <input type="hidden" name="PractiseID" #PractiseID="ngModel" [(ngModel)]="formData.PractiseID">
+  <div class="shot-map">
+    <img class="shot-map-img" src="../../../assets/images/half-rotate.png">
+  </div>
   <div class="form-row">
     <div class="col-md-6">
       <div class="form-group">
@@ -115,4 +119,7 @@
     <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]>Close</button>
 
   </div>
+
+
 </form>
+</mat-dialog-content>

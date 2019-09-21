@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
 export class ShotComponent implements OnInit {
   formData: Shot;
   isValid: boolean = true;
+  position: number = 0;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
@@ -68,4 +69,6 @@ export class ShotComponent implements OnInit {
       }
       return this.isValid;
     }
-  }
+
+
+}

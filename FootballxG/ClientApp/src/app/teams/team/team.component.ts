@@ -63,14 +63,18 @@ export class TeamComponent implements OnInit {
   }
 
 
-  onDeletePlayer(PlayerID: number) {
+  onDeletePlayer(PlayerID: number, i: number) {
+    if (PlayerID == null) {
+      this.service.playersData.splice(i,1);
+    } else {
     if (confirm('Are you sure to delete this record?')) {
       this.playerService.deletePlayer(PlayerID).then(res => {
-        this.toaster.warning("Deleted Successfully", "Restaurent App.");
+        this.toaster.warning("Deleted Successfully", "Football xG");
         this.reloadComponent();
       });
     }
   }
+}
 
   onSubmit(form: NgForm) {
     if (this.validateForm()) {

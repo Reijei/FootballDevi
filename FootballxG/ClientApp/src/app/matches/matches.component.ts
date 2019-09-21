@@ -31,7 +31,7 @@ export class MatchesComponent implements OnInit {
     if (confirm('Are you sure to delete this record?')) {
       this.service.deleteMatch(id).then(res => {
         this.refreshList();
-        this.toaster.warning("Deleted Successfully", "FootballxG.");
+        this.toaster.warning("Deleted Successfully", "Football xG.");
       });
     }
   }

@@ -11,13 +11,17 @@
   border: 1px solid #0080ff;
 }
 
+.main-content {
+  max-width: 1200px;
+  width: 100%;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
 table.table-hover tbody tr:hover {
   cursor: pointer;
 }
 
-body {
-  background-color: #04c582;
-}
 
 input.form-control, input.form-control:focus {
   background-color: #636b7b;

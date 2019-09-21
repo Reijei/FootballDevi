@@ -71,14 +71,18 @@ export class MatchComponent implements OnInit {
     }
   }
 
-  onDeleteShot(ShotID: number) {
-    if (confirm('Are you sure to delete this record?')) {
+  onDeleteShot(ShotID: number, i: number) {
+    if (ShotID == null) {
+      this.service.shotData.splice(i,1);
+    } else {
+      if (confirm('Are you sure to delete this record?')) {
       this.shotService.deleteShot(ShotID).then(res => {
-        this.toaster.warning("Deleted Successfully", "Restaurent App.");
+        this.toaster.warning("Deleted Successfully", "Football xG");
         this.reloadComponent();
       });
     }
   }
+}
 
 
 
@@ -86,7 +90,7 @@ export class MatchComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
-    dialogConfig.width="50%";
+    dialogConfig.width="800px";
     dialogConfig.data = {shotIndex, MatchID};
     this.dialog.open(ShotComponent, dialogConfig);
   }
