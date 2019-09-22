@@ -45,6 +45,15 @@ export class PlayerComponent implements OnInit {
     }
   }
 
+  updateXg(ctrl) {
+    if (this.formData.Xg == 0 || this.formData.Goals == 0) {
+      this.formData.XgP = 0;
+    }
+    else {
+      this.formData.XgP = this.formData.Goals - this.formData.Xg;
+    }
+  }
+
 
   onSubmit(form: NgForm) {
     console.log(form.value);

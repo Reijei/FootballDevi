@@ -132,7 +132,7 @@ namespace FootballxG.Controllers
                 }
                 foreach (var item in match.Shot)
                 {
-                    if (item.MatchID != 0)
+                    if (item.ShotID == null)
                     {
                         _context.Shot.Add(item);
 

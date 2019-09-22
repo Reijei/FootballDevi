@@ -16,6 +16,9 @@ export class MatchComponent implements OnInit {
   isValid: boolean = true;
   Id = '';
 
+  emptyHome = true;
+  emptyAway = true;
+
   constructor(public service: MatchService,
     private dialog: MatDialog,
     private toaster: ToastrService,
@@ -32,6 +35,8 @@ export class MatchComponent implements OnInit {
     this.service.getMatchById(parseInt(MatchID)).then(res=>{
       this.service.formData = res.match;
       this.service.shotData = res.shot;
+      this.onAddTeamName();
+      console.log(this.service.formData.DateTime);
     });
     }
   }
@@ -45,14 +50,14 @@ export class MatchComponent implements OnInit {
       DateTime: null,
       HomeName: '',
       AwayName: '',
-      HomeGoals: null,
-      AwayGoals: null,
-      HomeCorners: null,
-      AwayCorners: null,
-      HomeSide: null,
-      AwaySide: null,
-      HomeFree: null,
-      AwayFree: null,
+      HomeGoals: 0,
+      AwayGoals: 0,
+      HomeCorners: 0,
+      AwayCorners: 0,
+      HomeSide: 0,
+      AwaySide: 0,
+      HomeFree: 0,
+      AwayFree: 0,
       HomeTotal: null,
       AwayTotal: null,
       HomeXg: null,
@@ -70,6 +75,18 @@ export class MatchComponent implements OnInit {
       })
     }
   }
+  onAddTeamName() {
+    if(this.service.formData.HomeName != '') {
+      this.emptyHome = false;
+      console.log(this.service.formData.HomeName);
+    }
+
+    if(this.service.formData.AwayName != '') {
+      this.emptyAway = false;
+    }
+
+  }
+
 
   onDeleteShot(ShotID: number, i: number) {
     if (ShotID == null) {
@@ -84,14 +101,33 @@ export class MatchComponent implements OnInit {
   }
 }
 
+updateTotal() {
+    this.service.formData.HomeTotal = +this.service.formData.HomeCorners + +this.service.formData.HomeFree + +this.service.formData.HomeSide;
 
+}
 
-  EditShot(shotIndex, MatchID) {
+updateTotalAway() {
+  this.service.formData.AwayTotal = +this.service.formData.AwayCorners + +this.service.formData.AwayFree + +this.service.formData.AwaySide;
+
+}
+
+  EditShotHome(shotIndex, MatchID) {
+    var TeamName = this.service.formData.HomeName;
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.width="800px";
-    dialogConfig.data = {shotIndex, MatchID};
+    dialogConfig.data = {shotIndex, MatchID, TeamName};
+    this.dialog.open(ShotComponent, dialogConfig);
+  }
+
+  EditShotAway(shotIndex, MatchID) {
+    var TeamName = this.service.formData.AwayName;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width="800px";
+    dialogConfig.data = {shotIndex, MatchID, TeamName};
     this.dialog.open(ShotComponent, dialogConfig);
   }
 

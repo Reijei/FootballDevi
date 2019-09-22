@@ -1,103 +1,127 @@
 <form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
+  <div class="match-info">
   <div class="form-row">
-      <div class="col-md-6">
+      <div class="col-sm">
         <div class="form-group">
-          <label>Home team</label>
-          <input name="HomeName" #HomeName="ngModel" [(ngModel)]="service.formData.HomeName" class="form-control" [class.is-invalid]="!isValid">
+          <input name="HomeName" #HomeName="ngModel" [(ngModel)]="service.formData.HomeName" class="form-control" [class.is-invalid]="!isValid" [readonly]="!emptyHome"  (change)="onAddTeamName()">
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-sm">
+          <div class="form-group">
+            <h4>Teams</h4>
+          </div>
+        </div>
+      <div class="col-sm">
         <div class="form-group">
-          <label>Away team</label>
-          <input name="AwayName" #AwayName="ngModel" [(ngModel)]="service.formData.AwayName" class="form-control">
+          <input name="AwayName" #AwayName="ngModel" [(ngModel)]="service.formData.AwayName" class="form-control"  [readonly]="!emptyAway"  (change)="onAddTeamName()">
         </div>
       </div>
     </div>
     <div class="form-row">
-      <div class="col-md-6">
+      <div class="col-sm">
         <div class="form-group">
-          <label>HomeGoals</label>
           <input name="HomeGoals" #HomeGoals="ngModel" [(ngModel)]="service.formData.HomeGoals" class="form-control" [class.is-invalid]="!isValid">
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-sm">
+          <div class="form-group">
+            <h4>Goals</h4>
+          </div>
+        </div>
+      <div class="col-sm">
         <div class="form-group">
-          <label>AwayGoals</label>
           <input name="AwayGoals" #AwayGoals="ngModel" [(ngModel)]="service.formData.AwayGoals" class="form-control">
         </div>
       </div>
     </div>
     <div class="form-row">
-      <div class="col-md-6">
+      <div class="col-sm">
         <div class="form-group">
-          <label>HomeCorners</label>
-          <input name="HomeCorners" #HomeCorners="ngModel" [(ngModel)]="service.formData.HomeCorners" class="form-control" [class.is-invalid]="!isValid">
+          <input name="HomeCorners" #HomeCorners="ngModel" [(ngModel)]="service.formData.HomeCorners" class="form-control" [class.is-invalid]="!isValid"  (change)="updateTotal()">
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>AwayCorners</label>
-          <input name="AwayCorners" #AwayCorners="ngModel" [(ngModel)]="service.formData.AwayCorners" class="form-control">
+      <div class="col-sm">
+          <div class="form-group">
+            <h4>Corners</h4>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="col-md-6">
+      <div class="col-sm">
         <div class="form-group">
-          <label>HomeSide</label>
-          <input name="HomeSide" #HomeSide="ngModel" [(ngModel)]="service.formData.HomeSide" class="form-control" [class.is-invalid]="!isValid">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>AwaySide</label>
-          <input name="AwaySide" #AwaySide="ngModel" [(ngModel)]="service.formData.AwaySide" class="form-control">
+          <input name="AwayCorners" #AwayCorners="ngModel" [(ngModel)]="service.formData.AwayCorners" class="form-control" (change)="updateTotalAway()">
         </div>
       </div>
     </div>
     <div class="form-row">
-      <div class="col-md-6">
+      <div class="col-sm">
         <div class="form-group">
-          <label>HomeFree</label>
-          <input name="HomeFree" #HomeFree="ngModel" [(ngModel)]="service.formData.HomeFree" class="form-control" [class.is-invalid]="!isValid">
+          <input name="HomeSide" #HomeSide="ngModel" [(ngModel)]="service.formData.HomeSide" class="form-control" [class.is-invalid]="!isValid"  (change)="updateTotal()">
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>AwayFree</label>
-          <input name="AwayFree" #AwayFree="ngModel" [(ngModel)]="service.formData.AwayFree" class="form-control">
+      <div class="col-sm">
+          <div class="form-group">
+            <h4>Sides</h4>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="col-md-6">
+      <div class="col-sm">
         <div class="form-group">
-          <label>HomeTotal</label>
-          <input name="HomeTotal" #HomeTotal="ngModel" [(ngModel)]="service.formData.HomeTotal" class="form-control" [class.is-invalid]="!isValid">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>AwayTotal</label>
-          <input name="AwayTotal" #AwayTotal="ngModel" [(ngModel)]="service.formData.AwayTotal" class="form-control">
+          <input name="AwaySide" #AwaySide="ngModel" [(ngModel)]="service.formData.AwaySide" class="form-control" (change)="updateTotalAway()">
         </div>
       </div>
     </div>
     <div class="form-row">
-      <div class="col-md-6">
+      <div class="col-sm">
         <div class="form-group">
-          <label>HomeXg</label>
+          <input name="HomeFree" #HomeFree="ngModel" [(ngModel)]="service.formData.HomeFree" class="form-control" [class.is-invalid]="!isValid"  (change)="updateTotal()">
+        </div>
+      </div>
+      <div class="col-sm">
+          <div class="form-group">
+            <h4>Free kicks</h4>
+          </div>
+        </div>
+      <div class="col-sm">
+        <div class="form-group">
+          <input name="AwayFree" #AwayFree="ngModel" [(ngModel)]="service.formData.AwayFree" class="form-control" (change)="updateTotalAway()">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-sm">
+        <div class="form-group">
+          <input name="HomeTotal" #HomeTotal="ngModel" [(ngModel)]="service.formData.HomeTotal" class="form-control" readonly>
+        </div>
+      </div>
+      <div class="col-sm">
+          <div class="form-group">
+            <h4>Total</h4>
+          </div>
+        </div>
+      <div class="col-sm">
+        <div class="form-group">
+          <input name="AwayTotal" #AwayTotal="ngModel" [(ngModel)]="service.formData.AwayTotal" class="form-control" readonly>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-sm">
+        <div class="form-group">
           <input name="HomeXg" #HomeXg="ngModel" [(ngModel)]="service.formData.HomeXg" class="form-control" [class.is-invalid]="!isValid">
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-sm">
+          <div class="form-group">
+            <h4>Total xG</h4>
+          </div>
+        </div>
+      <div class="col-sm">
         <div class="form-group">
-          <label>AwayXg</label>
           <input name="AwayXg" #AwayXg="ngModel" [(ngModel)]="service.formData.AwayXg" class="form-control">
         </div>
       </div>
     </div>
+  </div>
     <div class="table-wrapper">
+      <h3>{{this.service.formData.HomeName}}</h3>
       <table class="fl-table">
     <thead>
       <th>Playername</th>
@@ -106,29 +130,52 @@
       <th>Goals</th>
       <th>Passes</th>
       <th>xG</th>
-      <th><a class="btn btn-sm btn-success text-white" (click)="EditShot(null, service.formData.MatchID)"><i class="fa fa-plus"></i> Add Player</a>
+      <th><a class="btn btn-sm btn-success text-white" (click)="EditShotHome(null, service.formData.MatchID)"><i class="fa fa-plus"></i> Add Player</a>
       </th>
     </thead>
     <tbody>
-      <tr *ngIf="service.shotData.length==0">
-        <td class="font-italic text-center" colspan="5">
-          No shots found.
-        </td>
-      </tr>
       <tr *ngFor="let item of service.shotData; let i=index;">
-        <td>{{item.ShooterName}}</td>
-        <td>{{item.Assist}}</td>
-        <td>{{item.Result}}</td>
-        <td>{{item.Half}}</td>
-        <td>{{item.Xg}}</td>
-        <td>{{item.Comments}}</td>
-        <td><a class="btn btn-sm btn-info text-white" (click)="EditShot(i, service.formData.MatchID)"><i class="fa fa-pencil"></i></a>
+        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.ShooterName}}</td>
+        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Assist}}</td>
+        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Result}}</td>
+        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Half}}</td>
+        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Xg}}</td>
+        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Comments}}</td>
+        <td *ngIf="item.TeamName == this.service.formData.HomeName"><a class="btn btn-sm btn-info text-white" (click)="EditShotHome(i, service.formData.MatchID)"><i class="fa fa-pencil"></i></a>
           <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteShot(item.ShotID, i)"><i class="fa fa-trash"></i></a>
         </td>
       </tr>
     </tbody>
   </table>
-    </div>
+</div>
+<div class="table-wrapper">
+    <h3>{{this.service.formData.AwayName}}</h3>
+    <table class="fl-table">
+  <thead>
+    <th>Playername</th>
+    <th>No</th>
+    <th>Position</th>
+    <th>Goals</th>
+    <th>Passes</th>
+    <th>xG</th>
+    <th><a class="btn btn-sm btn-success text-white" (click)="EditShotAway(null, service.formData.MatchID)"><i class="fa fa-plus"></i> Add Player</a>
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of service.shotData; let i=index;">
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.ShooterName}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Assist}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Result}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Half}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Xg}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Comments}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName"><a class="btn btn-sm btn-info text-white" (click)="EditShotAway(i, service.formData.MatchID, service.formData.HomeName)"><i class="fa fa-pencil"></i></a>
+        <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteShot(item.ShotID, i)"><i class="fa fa-trash"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
   <div class="form-group">
     <button type="submit" class="btn btn-sm btn-success text-white">Submit</button>
     <button class="btn btn-sm btn-success text-white ml-1" (click)="redirectBack()">Back</button>

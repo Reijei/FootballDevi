@@ -5,6 +5,7 @@
   <input type="hidden" name="ShotID" #ShotID="ngModel" [(ngModel)]="formData.ShotID">
   <input type="hidden" name="MatchID" #MatchID="ngModel" [(ngModel)]="formData.MatchID">
   <input type="hidden" name="PractiseID" #PractiseID="ngModel" [(ngModel)]="formData.PractiseID">
+  <input type="hidden" name="TeamName" #TeamName="ngModel" [(ngModel)]="formData.TeamName">
   <div class="shot-map">
     <img class="shot-map-img" src="../../../assets/images/half-rotate.png">
   </div>
@@ -54,13 +55,23 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>BodyPart</label>
-        <input name="BodyPart" #BodyPart="ngModel" [(ngModel)]="formData.BodyPart" class="form-control">
+        <select name="BodyPart" #BodyPart="ngModel" [(ngModel)]="formData.BodyPart" class="form-control">
+          <option value="">-Select-</option>
+          <option value="Head">Head</option>
+          <option value="Left">Left foot</option>
+          <option value="Right">Right foot</option>
+        </select>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label>Result</label>
-        <input name="Result" #Result="ngModel" [(ngModel)]="formData.Result" class="form-control">
+        <select name="Result" #Result="ngModel" [(ngModel)]="formData.Result" class="form-control">
+            <option value="">-Select-</option>
+            <option value="Goal">Goal</option>
+            <option value="Miss">Miss</option>
+            <option value="Block">Block</option>
+        </select>
       </div>
     </div>
   </div>
@@ -68,13 +79,21 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>Breakway</label>
-        <input name="Breakway" #Breakway="ngModel" [(ngModel)]="formData.Breakway" class="form-control">
+        <select name="Breakway" #Breakway="ngModel" [(ngModel)]="formData.Breakway" class="form-control">
+            <option value="">-Select-</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label>Pattern</label>
-        <input name="Pattern" #Pattern="ngModel" [(ngModel)]="formData.Pattern" class="form-control">
+        <select name="Pattern" #Pattern="ngModel" [(ngModel)]="formData.Pattern" class="form-control">
+            <option value="">-Select-</option>
+            <option value="Regular">Regular</option>
+            <option value="Corner">Corner</option>
+        </select>
       </div>
     </div>
   </div>
@@ -82,13 +101,21 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>BigChange</label>
-        <input name="BigChange" #BigChange="ngModel" [(ngModel)]="formData.BigChange" class="form-control">
+        <select name="BigChange" #BigChange="ngModel" [(ngModel)]="formData.BigChange" class="form-control">
+            <option value="">-Select-</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label>NoChange</label>
-        <input name="NoChange" #NoChange="ngModel" [(ngModel)]="formData.NoChange" class="form-control">
+        <select name="NoChange" #NoChange="ngModel" [(ngModel)]="formData.NoChange" class="form-control">
+            <option value="">-Select-</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
       </div>
     </div>
   </div>
@@ -107,7 +134,7 @@
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-6">
+    <div class="col-sm">
       <div class="form-group">
         <label>Comments</label>
         <input name="Comments" #Comments="ngModel" [(ngModel)]="formData.Comments" class="form-control">

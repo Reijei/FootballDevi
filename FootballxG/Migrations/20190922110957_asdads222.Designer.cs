@@ -4,14 +4,16 @@ using FootballxG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FootballxG.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190922110957_asdads222")]
+    partial class asdads222
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,8 +163,7 @@ namespace FootballxG.Migrations
                     b.Property<string>("Comments")
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("DateTime")
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<DateTime?>("DateTime");
 
                     b.Property<int?>("Defenders");
 

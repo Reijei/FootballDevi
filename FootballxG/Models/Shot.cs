@@ -11,6 +11,7 @@ namespace FootballxG.Models
     {
         [Key]
         public int? ShotID { get; set; }
+        [Column(TypeName = "nvarchar(12)")]
         public DateTime? DateTime { get; set; }
         public int? Time { get; set; }
         public int? Half { get; set; }

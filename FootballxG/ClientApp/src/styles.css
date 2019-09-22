@@ -12,7 +12,7 @@
 }
 
 .main-content {
-  max-width: 1200px;
+  max-width: 1000px;
   width: 100%;
   margin-left:  auto;
   margin-right: auto;
@@ -32,11 +32,7 @@ input.form-control, input.form-control:focus {
     box-shadow: none;
   }
 
-button[type=submit].btn {
-  border-radius: 20px;
-  background-color: #04c582;
-  color: #fff;
-}
+
 
 div.form-group label:not(.text-danger) {
   color: #545d6a;
