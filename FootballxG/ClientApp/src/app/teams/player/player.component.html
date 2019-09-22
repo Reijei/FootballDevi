@@ -40,7 +40,7 @@
     <div class="col-sm">
       <div class="form-group">
         <label>Goals</label>
-        <input name="Goals" #Goals="ngModel" [(ngModel)]="formData.Goals" class="form-control" (change)="updateXg($event.target)">
+        <input name="Goals" #Goals="ngModel" [(ngModel)]="formData.Goals" class="form-control" (change)="updateXg()">
       </div>
     </div>
   </div>
@@ -76,7 +76,7 @@
     <div class="col-sm">
       <div class="form-group">
         <label>xG</label>
-        <input name="Xg" #Xg="ngModel" [(ngModel)]="formData.Xg" class="form-control">
+        <input name="Xg" #Xg="ngModel" [(ngModel)]="formData.Xg" class="form-control" (change)="updateXg()">
       </div>
     </div>
     <div class="col-sm">

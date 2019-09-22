@@ -35,6 +35,13 @@ h2{
   box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
 }
 
+button[type=submit].btn{
+  border-radius: 5px;
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
 .fl-table {
   border-radius: 5px;
   font-size: 12px;

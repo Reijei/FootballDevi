@@ -12,6 +12,13 @@ body{
 td:hover {
   cursor: pointer;
 }
+
+button[type=submit].btn{
+  border-radius: 5px;
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
 h2{
   text-align: center;
   font-size: 18px;
