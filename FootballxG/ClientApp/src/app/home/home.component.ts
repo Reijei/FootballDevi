@@ -5,13 +5,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: []
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   userDetails;
   OneMeter: number = 9.545;
-  FieldY: number = 526;
-  FieldX: number = 351;
+  FieldY: number = 542;
+  FieldX: number = 430;
 
   X: number = 0;
   Y: number = 0;
@@ -40,24 +40,22 @@ export class HomeComponent implements OnInit {
     var rect = event.target.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
+    console.log(x);
 
     y = this.FieldY - y;
     y = (y / this.OneMeter);
     y = Math.round(y * 100) / 100;
-    console.log(y);
     this.Y = y;
 
     if(x > this.FieldX) {
       x = x - this.FieldX;
       x = x / this.OneMeter;
       x = Math.round(x * 100) / 100;
-      console.log(x);
       this.X = x;
     } else {
       x = this.FieldX - x;
       x = (x / this.OneMeter);
       x = Math.round(x * 100) / 100;
-      console.log(x);
       this.X = x;
     }
 
