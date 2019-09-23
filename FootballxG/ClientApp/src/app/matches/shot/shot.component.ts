@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material"
 import { MatchService } from 'src/app/shared/match.service';
 import { Shot } from 'src/app/shared/shot.model';
@@ -12,6 +12,13 @@ import { NgForm } from '@angular/forms';
 export class ShotComponent implements OnInit {
   formData: Shot;
   isValid: boolean = true;
+  xpos = '';
+  OneMeter: number = 9.545;
+  FieldY: number = 526;
+  FieldX: number = 351;
+
+  X: number = 0;
+  Y: number = 0;
 
 
 
@@ -53,6 +60,36 @@ export class ShotComponent implements OnInit {
 
 
     }
+
+
+    getpos(event) {
+
+      var rect = event.target.getBoundingClientRect();
+      var x = event.clientX - rect.left;
+      var y = event.clientY - rect.top;
+
+      y = this.FieldY - y;
+      y = (y / this.OneMeter);
+      y = Math.round(y * 100) / 100;
+      console.log(y);
+      this.Y = y;
+
+      if(x > this.FieldX) {
+        x = x - this.FieldX;
+        x = x / this.OneMeter;
+        x = Math.round(x * 100) / 100;
+        console.log(x);
+        this.X = x;
+      } else {
+        x = this.FieldX - x;
+        x = (x / this.OneMeter);
+        x = Math.round(x * 100) / 100;
+        console.log(x);
+        this.X = x;
+      }
+
+    }
+
 
 
 

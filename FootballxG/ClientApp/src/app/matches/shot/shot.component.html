@@ -7,8 +7,13 @@
   <input type="hidden" name="PractiseID" #PractiseID="ngModel" [(ngModel)]="formData.PractiseID">
   <input type="hidden" name="TeamName" #TeamName="ngModel" [(ngModel)]="formData.TeamName">
   <div class="shot-map">
-    <img class="shot-map-img" src="../../../assets/images/half-rotate.png">
+    <img class="shot-map-img" (click)="getpos($event)" src="../../../assets/images/half-rotate.png">
   </div>
+
+  <p>Testi X: {{X}}</p>
+  <p>Testi y: {{Y}}</p>
+
+
   <div class="form-row">
     <div class="col-md-6">
       <div class="form-group">

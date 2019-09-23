@@ -124,23 +124,39 @@
       <h3>{{this.service.formData.HomeName}}</h3>
       <table class="fl-table">
     <thead>
-      <th>Playername</th>
-      <th>No</th>
-      <th>Position</th>
-      <th>Goals</th>
-      <th>Passes</th>
-      <th>xG</th>
-      <th><a class="btn btn-sm btn-success text-white" (click)="EditShotHome(null, service.formData.MatchID)"><i class="fa fa-plus"></i> Add Player</a>
+        <th>Shootername</th>
+        <th>Time</th>
+        <th>Half</th>
+        <th>Assist</th>
+        <th>X</th>
+        <th>Y</th>
+        <th>Bodypart</th>
+        <th>Result</th>
+        <th>Cross</th>
+        <th>Pattern</th>
+        <th>Big change</th>
+        <th>No change</th>
+        <th>Defenders</th>
+        <th>xG</th>
+      <th><a class="btn btn-sm btn-success text-white" (click)="EditShotHome(null, service.formData.MatchID)"><i class="fa fa-plus"></i> Add Shot</a>
       </th>
     </thead>
     <tbody>
       <tr *ngFor="let item of service.shotData; let i=index;">
-        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.ShooterName}}</td>
-        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Assist}}</td>
-        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Result}}</td>
-        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Half}}</td>
-        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Xg}}</td>
-        <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Comments}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.ShooterName}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Time}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Half}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Assist}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.PositionX}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.PositionY}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.BodyPart}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Result}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Breakway}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Pattern}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.BigChange}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.NoChange}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Defenders}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.HomeName">{{item.Xg}}</td>
         <td *ngIf="item.TeamName == this.service.formData.HomeName"><a class="btn btn-sm btn-info text-white" (click)="EditShotHome(i, service.formData.MatchID)"><i class="fa fa-pencil"></i></a>
           <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteShot(item.ShotID, i)"><i class="fa fa-trash"></i></a>
         </td>
@@ -152,23 +168,39 @@
     <h3>{{this.service.formData.AwayName}}</h3>
     <table class="fl-table">
   <thead>
-    <th>Playername</th>
-    <th>No</th>
-    <th>Position</th>
-    <th>Goals</th>
-    <th>Passes</th>
+    <th>Shootername</th>
+    <th>Time</th>
+    <th>Half</th>
+    <th>Assist</th>
+    <th>X</th>
+    <th>Y</th>
+    <th>Bodypart</th>
+    <th>Result</th>
+    <th>Cross</th>
+    <th>Pattern</th>
+    <th>Big change</th>
+    <th>No change</th>
+    <th>Defenders</th>
     <th>xG</th>
-    <th><a class="btn btn-sm btn-success text-white" (click)="EditShotAway(null, service.formData.MatchID)"><i class="fa fa-plus"></i> Add Player</a>
+    <th><a class="btn btn-sm btn-success text-white" (click)="EditShotAway(null, service.formData.MatchID)"><i class="fa fa-plus"></i> Add Shot</a>
     </th>
   </thead>
   <tbody>
     <tr *ngFor="let item of service.shotData; let i=index;">
       <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.ShooterName}}</td>
-      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Assist}}</td>
-      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Result}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Time}}</td>
       <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Half}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Assist}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.PositionX}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.PositionY}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.BodyPart}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Result}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Breakway}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Pattern}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.BigChange}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.NoChange}}</td>
+      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Defenders}}</td>
       <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Xg}}</td>
-      <td *ngIf="item.TeamName == this.service.formData.AwayName">{{item.Comments}}</td>
       <td *ngIf="item.TeamName == this.service.formData.AwayName"><a class="btn btn-sm btn-info text-white" (click)="EditShotAway(i, service.formData.MatchID, service.formData.HomeName)"><i class="fa fa-pencil"></i></a>
         <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteShot(item.ShotID, i)"><i class="fa fa-trash"></i></a>
       </td>

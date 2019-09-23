@@ -1,4 +1,16 @@
 <nav class="navbar navbar-dark bg-dark">
   <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+  <a class="btn btn-sm btn-success text-white" routerLink="/matches">Matches</a>
+  <a class="btn btn-sm btn-success text-white" routerLink="/teams">Teams</a>
 </nav>
+
+
+<div class="home-body">
+    <div class="shot-map">
+        <img class="shot-map-img" (click)="getpos($event)" src="../../../assets/images/half-rotate.png">
+      </div>
+
+      <p>Testi X: {{X}}</p>
+      <p>Testi y: {{Y}}</p>
+</div>
 
