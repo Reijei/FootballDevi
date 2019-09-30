@@ -6,146 +6,149 @@
   <input type="hidden" name="MatchID" #MatchID="ngModel" [(ngModel)]="formData.MatchID">
   <input type="hidden" name="PractiseID" #PractiseID="ngModel" [(ngModel)]="formData.PractiseID">
   <input type="hidden" name="TeamName" #TeamName="ngModel" [(ngModel)]="formData.TeamName">
-  <div class="shot-map">
-    <img class="shot-map-img" (click)="getpos($event)" src="../../../assets/images/half-rotate.png">
-  </div>
 
-  <p>Testi X: {{X}}</p>
-  <p>Testi y: {{Y}}</p>
-
-
-  <div class="form-row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Time</label>
-        <input name="Time" #Time="ngModel" [(ngModel)]="formData.Time" class="form-control" [class.is-invalid]="!isValid">
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Half</label>
-        <input name="Half" #Half="ngModel" [(ngModel)]="formData.Half" class="form-control">
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>ShooterName</label>
-        <input name="ShooterName" #ShooterName="ngModel" [(ngModel)]="formData.ShooterName" class="form-control">
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Assist</label>
-        <input name="Assist" #Assist="ngModel" [(ngModel)]="formData.Assist" class="form-control">
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>PositionX</label>
-        <input name="PositionX" #PositionX="ngModel" [(ngModel)]="formData.PositionX" class="form-control">
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>PositionY</label>
-        <input name="PositionY" #PositionY="ngModel" [(ngModel)]="formData.PositionY" class="form-control">
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>BodyPart</label>
-        <select name="BodyPart" #BodyPart="ngModel" [(ngModel)]="formData.BodyPart" class="form-control">
-          <option value="">-Select-</option>
-          <option value="Head">Head</option>
-          <option value="Left">Left foot</option>
-          <option value="Right">Right foot</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Result</label>
-        <select name="Result" #Result="ngModel" [(ngModel)]="formData.Result" class="form-control">
-            <option value="">-Select-</option>
-            <option value="Goal">Goal</option>
-            <option value="Miss">Miss</option>
-            <option value="Block">Block</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Breakway</label>
-        <select name="Breakway" #Breakway="ngModel" [(ngModel)]="formData.Breakway" class="form-control">
-            <option value="">-Select-</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Pattern</label>
-        <select name="Pattern" #Pattern="ngModel" [(ngModel)]="formData.Pattern" class="form-control">
-            <option value="">-Select-</option>
-            <option value="Regular">Regular</option>
-            <option value="Corner">Corner</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>BigChange</label>
-        <select name="BigChange" #BigChange="ngModel" [(ngModel)]="formData.BigChange" class="form-control">
-            <option value="">-Select-</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>NoChange</label>
-        <select name="NoChange" #NoChange="ngModel" [(ngModel)]="formData.NoChange" class="form-control">
-            <option value="">-Select-</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Defenders</label>
-        <input name="Defenders" #Defenders="ngModel" [(ngModel)]="formData.Defenders" class="form-control">
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Xg</label>
-        <input name="Xg" #Xg="ngModel" [(ngModel)]="formData.Xg" class="form-control">
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
+  <div class="row" id="main-shot">
     <div class="col-sm">
-      <div class="form-group">
-        <label>Comments</label>
-        <input name="Comments" #Comments="ngModel" [(ngModel)]="formData.Comments" class="form-control">
+      <div class="shot-map" (click)="getpos($event)" >
+          <div *ngIf="this.showBall" class="circle" [style.left.px]="this.PX" [style.top.px]="this.PY"></div>
       </div>
     </div>
+    <div class="col-sm">
+        <div class="row">
+          <div class="col-sm">
+            <div class="side-inputs">
+                <label>Time</label>
+                <input name="Time" #Time="ngModel" [(ngModel)]="formData.Time" class="form-control" maxlength="10">
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="side-inputs">
+                  <label>Half</label>
+                  <input name="Half" #Half="ngModel" [(ngModel)]="formData.Half" class="form-control"  maxlength="10">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+              <div class="side-inputs">
+                  <label>ShooterName</label>
+                  <input name="ShooterName" #ShooterName="ngModel" [(ngModel)]="formData.ShooterName" class="form-control" [class.is-invalid]="!isValid"  maxlength="50">
+                </div>
+              </div>
+              <div class="col-sm">
+              <div class="side-inputs">
+                  <label>Assist</label>
+                  <input name="Assist" #Assist="ngModel" [(ngModel)]="formData.Assist" class="form-control"  maxlength="50">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+              <div class="side-inputs">
+                  <label>PositionX</label>
+                  <input name="PositionX" #PositionX="ngModel" [(ngModel)]="formData.PositionX" class="form-control" maxlength="5">
+                </div>
+              </div>
+              <div class="col-sm">
+              <div class="side-inputs">
+                  <label>PositionY</label>
+                  <input name="PositionY" #PositionY="ngModel" [(ngModel)]="formData.PositionY" class="form-control" maxlength="5">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+              <div class="side-inputs">
+                  <label>BodyPart</label>
+                  <select (change)="calculateXg()" name="BodyPart" #BodyPart="ngModel" [(ngModel)]="formData.BodyPart" class="form-control"  (change)="calculateXg()"    maxlength="10">
+                    <option value="">-Select-</option>
+                    <option value="Head">Head</option>
+                    <option value="Left">Left foot</option>
+                    <option value="Right">Right foot</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="side-inputs">
+                    <label>Result</label>
+                    <select name="Result" #Result="ngModel" [(ngModel)]="formData.Result" class="form-control" maxlength="10">
+                        <option value="">-Select-</option>
+                        <option value="Goal">Goal</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Block">Block</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <div class="side-inputs">
+                      <label>Breakway</label>
+                      <select name="Breakway" #Breakway="ngModel" [(ngModel)]="formData.Breakway" class="form-control"  maxlength="10">
+                          <option value="">-Select-</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <div class="side-inputs">
+                        <label>Pattern</label>
+                        <select name="Pattern" #Pattern="ngModel" [(ngModel)]="formData.Pattern" class="form-control"  maxlength="10">
+                            <option value="">-Select-</option>
+                            <option value="Regular">Regular</option>
+                            <option value="Corner">Corner</option>
+                            <option value="Side">Side</option>
+                            <option value="Free">Freekick</option>
+                            <option value="Penalty">Penalty</option>
+                            <option value="SideToss">Toss</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm">
+                  <div class="side-inputs">
+                      <label>BigChange</label>
+                      <select name="BigChange" #BigChange="ngModel" [(ngModel)]="formData.BigChange" class="form-control" maxlength="10">
+                          <option value="">-Select-</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                  <div class="side-inputs">
+                      <label>NoChange</label>
+                      <select name="NoChange" #NoChange="ngModel" [(ngModel)]="formData.NoChange" class="form-control" maxlength="10">
+                          <option value="">-Select-</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm">
+                  <div class="side-inputs">
+                      <label>Defenders</label>
+                      <input name="Defenders" #Defenders="ngModel" [(ngModel)]="formData.Defenders" class="form-control" maxlength="10">
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                <div class="side-inputs">
+                    <label>Xg</label>
+                    <input name="Xg" #Xg="ngModel" [(ngModel)]="formData.Xg" class="form-control" maxlength="5">
+                  </div>
+                </div>
+              </div>
+                  <div class="side-inputs">
+                      <label>Comments</label>
+                      <input name="Comments" #Comments="ngModel" [(ngModel)]="formData.Comments" class="form-control" maxlength="150">
+                    </div>
+      </div>
   </div>
+
   <div class="form-group">
     <button type="submit" class="btn btn-dark">Submit</button>
     <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]>Close</button>

@@ -4,6 +4,7 @@
 <div class="table-wrapper">
 <table class="fl-table">
   <thead>
+  <th>Date</th>
   <th>Homename</th>
   <th>Away</th>
   <th>Home goals</th>
@@ -16,6 +17,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of matchList">
+        <td (click)="openForEdit(item.MatchID)">{{item.DateTime}}</td>
       <td (click)="openForEdit(item.MatchID)">{{item.HomeName}}</td>
       <td (click)="openForEdit(item.MatchID)">{{item.AwayName}}</td>
       <td (click)="openForEdit(item.MatchID)">{{item.HomeGoals}}</td>
@@ -30,5 +32,7 @@
     </tr>
   </tbody>
 </table>
+
 </div>
+<a class="btn btn-sm btn-success text-white" routerLink="/home">Back to home</a>
 

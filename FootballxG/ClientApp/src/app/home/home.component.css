@@ -1,6 +1,6 @@
 .shot-map-img {
-  width: 100%;
-  height: 100%;
+  height: 550px !important;
+  width: 860px !important;
 }
 
 .shot-map {
@@ -8,6 +8,47 @@
   width: 860px !important;
   margin-left:  auto;
   margin-right: auto;
-  margin-top: 20px;
+  margin-top: 30px;
+  background-image: url("../../assets/images/half-rotate.png");
+  background-size: 100% 100%;
 }
 
+.circle {
+  display: block;
+  height: 13px;
+  width: 13px;
+  margin: 0;
+  position: relative;
+}
+
+.circle:before {
+  content: "\f1e3";  /* this is your text. You can also use UTF-8 character codes as I do here */
+  font-family: FontAwesome;
+  left:-1px;
+  position:absolute;
+  top:-6px;
+}
+
+
+input, select {
+  width: 100%;
+  padding: 5px 10px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 5px;
+}
+
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}

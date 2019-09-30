@@ -1,6 +1,12 @@
 <div class="banner">
   <h1>Teams</h1>
 </div>
+<div>
+  <p>sort by serie: </p>
+  <select  [(ngModel)]="this.sortSerie">
+    <option  *ngFor="let team of teamList" value="{{team.Serie}}">{{team.Serie}}</option>
+  </select>
+</div>
 <div class="table-wrapper">
     <table class="fl-table">
   <thead>
@@ -13,15 +19,16 @@
   </thead>
   <tbody>
     <tr *ngFor="let team of teamList">
-      <td (click)="openForEdit(team.TeamID)">{{team.TeamName}}</td>
-      <td (click)="openForEdit(team.TeamID)">{{team.Serie}}</td>
-      <td (click)="openForEdit(team.TeamID)">{{team.Position}}</td>
-      <td (click)="openForEdit(team.TeamID)">{{team.Wins}}</td>
-      <td (click)="openForEdit(team.TeamID)">{{team.Loses}}</td>
-      <td>
+      <td (click)="openForEdit(team.TeamID)" *ngIf="team.Serie == this.sortSerie || this.sortSerie == ''">{{team.TeamName}}</td>
+      <td (click)="openForEdit(team.TeamID)" *ngIf="team.Serie == this.sortSerie || this.sortSerie == ''">{{team.Serie}}</td>
+      <td (click)="openForEdit(team.TeamID)" *ngIf="team.Serie == this.sortSerie || this.sortSerie == ''">{{team.Position}}</td>
+      <td (click)="openForEdit(team.TeamID)" *ngIf="team.Serie == this.sortSerie || this.sortSerie == ''">{{team.Wins}}</td>
+      <td (click)="openForEdit(team.TeamID)" *ngIf="team.Serie == this.sortSerie || this.sortSerie == ''">{{team.Loses}}</td>
+      <td  *ngIf="team.Serie == this.sortSerie || this.sortSerie == ''">
         <a class="btn text-danger" (click)="onOrderDelete(team.TeamID)"><i class="fa fa-trash fa-lg"></i></a>
       </td>
     </tr>
   </tbody>
 </table>
 </div>
+<a class="btn btn-sm btn-success text-white" routerLink="/home">Back to home</a>

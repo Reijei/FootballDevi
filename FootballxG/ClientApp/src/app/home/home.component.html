@@ -5,12 +5,70 @@
 </nav>
 
 
-<div class="home-body">
-    <div class="shot-map">
-        <img class="shot-map-img" (click)="getpos($event)" src="../../../assets/images/half-rotate.png">
+<div class="row">
+    <div class="col-sm">
+      <div class="shot-map" (click)="getpos($event)" >
+        <div *ngIf="this.showBall" class="circle" [style.left.px]="this.PX" [style.top.px]="this.PY"></div>
       </div>
-
-      <p>Testi X: {{X}}</p>
-      <p>Testi y: {{Y}}</p>
+    </div>
+    <div class="col-sm">
+      <div class="side-inputs">
+        <label>X</label>
+        <input [(ngModel)]="this.X">
+    </div>
+    <div class="side-inputs">
+        <label>Y</label>
+        <input [(ngModel)]="this.Y">
+    </div>
+    <div class="side-inputs">
+      <label>Bodypart</label>
+    <select (change)="calculateXg()"  [(ngModel)]="this.part">
+        <option value="">-Select-</option>
+        <option value="Head">Head</option>
+        <option value="Left">Left foot</option>
+        <option value="Right">Right foot</option>
+      </select>
+      </div>
+        <div class="side-inputs">
+            <label>Cross</label>
+            <select>
+                <option value="">-Select-</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+          </div>
+          <div class="side-inputs">
+            <label>Pattern</label>
+            <select>
+              <option value="">-Select-</option>
+              <option value="Regular">Regular</option>
+              <option value="Corner">Corner</option>
+              <option value="Side">Side</option>
+              <option value="Free">Freekick</option>
+              <option value="Penalty">Penalty</option>
+              <option value="SideToss">Toss</option>
+          </select>
+        </div>
+        <div class="side-inputs">
+            <label>Big Change</label>
+            <select>
+                <option value="">-Select-</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+          </div>
+          <div class="side-inputs">
+            <label>No Change</label>
+            <select>
+              <option value="">-Select-</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+        <div class="side-inputs">
+            <label>xG</label>
+            <input [(ngModel)]="this.Xg">
+          </div>
+    </div>
 </div>
 

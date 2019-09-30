@@ -47,6 +47,11 @@
     <th>Passes</th>
     <th>Spots</th>
     <th>xG</th>
+    <th>xG+-</th>
+    <th>xA</th>
+    <th>xA+-</th>
+    <th>xG90</th>
+    <th>xA90</th>
     <th><a class="btn btn-sm btn-success text-white" (click)="AddOrEditPlayer(null, service.formData.TeamID)"><i class="fa fa-plus"></i> Add Player</a>
     </th>
   </thead>
@@ -66,6 +71,11 @@
       <td>{{player.Passes}}</td>
       <td>{{player.Spots}}</td>
       <td>{{player.Xg}}</td>
+      <td>{{player.XgP}}</td>
+      <td>{{player.Xa}}</td>
+      <td>{{player.XaP}}</td>
+      <td>{{player.Xg90}}</td>
+      <td>{{player.Xa90}}</td>
       <td><a class="btn btn-sm btn-info text-white" (click)="AddOrEditPlayer(i, service.formData.TeamID)"><i class="fa fa-pencil"></i></a>
         <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeletePlayer(player.PlayerID, i)"><i class="fa fa-trash"></i></a>
       </td>

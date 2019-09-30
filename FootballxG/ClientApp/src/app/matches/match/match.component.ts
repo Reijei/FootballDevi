@@ -15,6 +15,7 @@ import { ShotComponent } from '../shot/shot.component';
 export class MatchComponent implements OnInit {
   isValid: boolean = true;
   Id = '';
+  date = '';
 
   emptyHome = true;
   emptyAway = true;
@@ -36,9 +37,12 @@ export class MatchComponent implements OnInit {
       this.service.formData = res.match;
       this.service.shotData = res.shot;
       this.onAddTeamName();
-      console.log(this.service.formData.DateTime);
+      this.date = this.service.formData.DateTime.toString();
+      this.date = this.date.slice(0, 10);
     });
     }
+
+
   }
 
   resetForm(form?:NgForm) {
@@ -78,7 +82,6 @@ export class MatchComponent implements OnInit {
   onAddTeamName() {
     if(this.service.formData.HomeName != '') {
       this.emptyHome = false;
-      console.log(this.service.formData.HomeName);
     }
 
     if(this.service.formData.AwayName != '') {
@@ -87,6 +90,14 @@ export class MatchComponent implements OnInit {
 
   }
 
+
+  updateXgTotal() {
+    for (let item of this.service.shotData) {
+      if (item.TeamName == this.service.formData.HomeName) {
+        this.service.formData.HomeXg = this.service.formData.HomeXg + item.Xg;
+      }
+    }
+  }
 
   onDeleteShot(ShotID: number, i: number) {
     if (ShotID == null) {
@@ -116,9 +127,31 @@ updateTotalAway() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
-    dialogConfig.width="800px";
+    dialogConfig.width="1500px";
     dialogConfig.data = {shotIndex, MatchID, TeamName};
-    this.dialog.open(ShotComponent, dialogConfig);
+    this.dialog.open(ShotComponent, dialogConfig).afterClosed().subscribe(res => {
+      this.afterCloseHome();
+    });
+  }
+
+  afterCloseHome() {
+    this.service.formData.HomeXg = 0;
+    for (let item of this.service.shotData) {
+      if (this.service.formData.HomeName == item.TeamName) {
+        this.service.formData.HomeXg = this.service.formData.HomeXg + +item.Xg;
+
+      }
+    }
+  }
+
+  afterCloseAway() {
+    this.service.formData.AwayXg = 0;
+    for (let item of this.service.shotData) {
+      if (this.service.formData.AwayName == item.TeamName) {
+        this.service.formData.AwayXg = this.service.formData.AwayXg + +item.Xg;
+
+      }
+    }
   }
 
   EditShotAway(shotIndex, MatchID) {
@@ -126,9 +159,11 @@ updateTotalAway() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
-    dialogConfig.width="800px";
+    dialogConfig.width="1500px";
     dialogConfig.data = {shotIndex, MatchID, TeamName};
-    this.dialog.open(ShotComponent, dialogConfig);
+    this.dialog.open(ShotComponent, dialogConfig).afterClosed().subscribe(res => {
+      this.afterCloseAway();
+    });
   }
 
   validateForm() {
