@@ -1,0 +1,133 @@
+<form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
+  <div class="match-info">
+      <div *ngIf="this.service.formData.DateTime != null" form-row>
+          <div class="col-sm">
+              <div class="form-group">
+                  <h3 id="date">Date: {{this.date}}</h3>
+              </div>
+        </div>
+        </div>
+  <div class="form-row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label>Team Name</label>
+          <input name="TeamName" #TeamName="ngModel" [(ngModel)]="service.formData.TeamName" class="form-control" [class.is-invalid]="!isValid" maxlength="50">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label>Goals</label>
+          <input name="Goals" #Goals="ngModel" [(ngModel)]="service.formData.Goals" class="form-control" [class.is-invalid]="!isValid">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label>Corners</label>
+          <input name="Corners" #Corners="ngModel" [(ngModel)]="service.formData.Corners" class="form-control" [class.is-invalid]="!isValid" (change)="updateTotal()">
+        </div>
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label>Sides</label>
+          <input name="Side" #Side="ngModel" [(ngModel)]="service.formData.Side" class="form-control" [class.is-invalid]="!isValid" (change)="updateTotal()">
+        </div>
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label>Free kicks</label>
+          <input name="Free" #Free="ngModel" [(ngModel)]="service.formData.Free" class="form-control" [class.is-invalid]="!isValid"  (change)="updateTotal()">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label>Total</label>
+          <input name="Total" #Total="ngModel" [(ngModel)]="service.formData.Total" class="form-control" readonly>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label>Total xG</label>
+          <input name="Xg" #Xg="ngModel" [(ngModel)]="service.formData.Xg" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div form-row>
+        <div class="col-sm">
+            <div class="form-group">
+              <label>Date</label>
+              <input type="date" name="DateTime" #DateTime="ngModel" [(ngModel)]="service.formData.DateTime" class="form-control">
+            </div>
+      </div>
+      </div>
+      <div form-row>
+        <div class="col-sm">
+            <div class="form-group">
+              <label>Serie</label>
+              <input name="Serie" #Serie="ngModel" [(ngModel)]="service.formData.Serie" class="form-control">
+            </div>
+      </div>
+      </div>
+  </div>
+    <div class="table-wrapper">
+      <h3>{{this.service.formData.TeamName}}</h3>
+      <table class="fl-table">
+    <thead>
+        <th>Team</th>
+        <th>Time</th>
+        <th>Half</th>
+        <th>Assist</th>
+        <th>X</th>
+        <th>Y</th>
+        <th>Bodypart</th>
+        <th>Result</th>
+        <th>Cross</th>
+        <th>Pattern</th>
+        <th>Big change</th>
+        <th>No change</th>
+        <th>Defenders</th>
+        <th>xG</th>
+      <th><a class="btn btn-sm btn-success text-white" (click)="EditShot(null, service.formData.PractiseID)"><i class="fa fa-plus"></i> Add Shot</a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of service.shotData; let i=index;">
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.ShooterName}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.Time}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.Half}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.Assist}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.PositionX}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.PositionY}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.BodyPart}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.Result}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.Breakway}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.Pattern}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.BigChange}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.NoChange}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.Defenders}}</td>
+          <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.Xg}}</td>
+        <td *ngIf="item.TeamName == this.service.formData.TeamName"><a class="btn btn-sm btn-info text-white" (click)="EditShot(i, service.formData.PractiseID)"><i class="fa fa-pencil"></i></a>
+          <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteShot(item.ShotID, i)"><i class="fa fa-trash"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-sm btn-success text-white">Submit</button>
+    <button class="btn btn-sm btn-success text-white ml-1" (click)="redirectBack()">Back</button>
+  </div>
+</form>

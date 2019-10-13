@@ -36,9 +36,6 @@ export class MatchComponent implements OnInit {
     this.service.getMatchById(parseInt(MatchID)).then(res=>{
       this.service.formData = res.match;
       this.service.shotData = res.shot;
-      this.onAddTeamName();
-      this.date = this.service.formData.DateTime.toString();
-      this.date = this.date.slice(0, 10);
     });
     }
 
@@ -66,6 +63,7 @@ export class MatchComponent implements OnInit {
       AwayTotal: null,
       HomeXg: null,
       AwayXg: null,
+      Serie: '',
     };
     this.service.shotData = [];
   }

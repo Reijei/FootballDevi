@@ -45,7 +45,9 @@ namespace FootballxG.Models
         public int? MatchID { get; set; }
         public int? PractiseID { get; set; }
 
-        public Match Match { get; set; }
+        public virtual Match Match { get; set; }
+
+        public virtual Practise Practise { get; set; }
 
 
 

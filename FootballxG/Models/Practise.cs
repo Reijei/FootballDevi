@@ -14,11 +14,16 @@ namespace FootballxG.Models
         public DateTime? DateTime { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         public string TeamName { get; set; }
+        [Column(TypeName = "nvarchar(50)")]
+        public string Serie { get; set; }
         public int? Goals { get; set; }
         public int? Corners { get; set; }
         public int? Side { get; set; }
         public int? Free { get; set; }
         public int? Total { get; set; }
         public float? Xg { get; set; }
+
+
+        public List<Shot> Shot { get; set; }
     }
 }

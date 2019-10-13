@@ -9,6 +9,8 @@ import { TeamsComponent } from './teams/teams.component';
 import { TeamComponent } from './teams/team/team.component';
 import { MatchesComponent } from './matches/matches.component';
 import { MatchComponent } from './matches/match/match.component';
+import { PractisesComponent } from './practises/practises.component';
+import { PractiseComponent } from './practises/practise/practise.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/user/login',pathMatch:'full'},
@@ -29,6 +31,11 @@ const routes: Routes = [
   {path: 'match', children: [
     {path: '', component: MatchComponent},
     {path: 'edit/:id', component: MatchComponent}
+  ]},
+  {path: 'practises', component: PractisesComponent},
+  {path: 'practise', children: [
+    {path: '', component: PractiseComponent},
+    {path: 'edit/:id', component: PractiseComponent}
   ]},
 ];
 

@@ -1,12 +1,9 @@
 <div class="banner">
   <h1>Teams</h1>
 </div>
-<div>
-  <p>sort by serie: </p>
-  <select  [(ngModel)]="this.sortSerie">
-    <option  *ngFor="let team of teamList" value="{{team.Serie}}">{{team.Serie}}</option>
-  </select>
-</div>
+<div class="search-team">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search">
+  </div>
 <div class="table-wrapper">
     <table class="fl-table">
   <thead>
@@ -18,7 +15,7 @@
   <th><a class="btn btn-sm btn-success text-white" routerLink="/team">Create new</a></th>
   </thead>
   <tbody>
-    <tr *ngFor="let team of teamList">
+    <tr *ngFor="let team of teamList | filter:searchText">
       <td (click)="openForEdit(team.TeamID)" *ngIf="team.Serie == this.sortSerie || this.sortSerie == ''">{{team.TeamName}}</td>
       <td (click)="openForEdit(team.TeamID)" *ngIf="team.Serie == this.sortSerie || this.sortSerie == ''">{{team.Serie}}</td>
       <td (click)="openForEdit(team.TeamID)" *ngIf="team.Serie == this.sortSerie || this.sortSerie == ''">{{team.Position}}</td>

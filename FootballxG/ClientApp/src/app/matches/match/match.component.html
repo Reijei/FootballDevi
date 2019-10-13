@@ -27,7 +27,7 @@
     <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
-          <input name="HomeGoals" #HomeGoals="ngModel" [(ngModel)]="service.formData.HomeGoals" class="form-control" [class.is-invalid]="!isValid" maxlength="10">
+          <input name="HomeGoals" #HomeGoals="ngModel" [(ngModel)]="service.formData.HomeGoals" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
       <div class="col-sm">
@@ -37,14 +37,14 @@
         </div>
       <div class="col-sm">
         <div class="form-group">
-          <input name="AwayGoals" #AwayGoals="ngModel" [(ngModel)]="service.formData.AwayGoals" class="form-control" maxlength="10">
+          <input name="AwayGoals" #AwayGoals="ngModel" [(ngModel)]="service.formData.AwayGoals" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
-          <input name="HomeCorners" #HomeCorners="ngModel" [(ngModel)]="service.formData.HomeCorners" class="form-control" [class.is-invalid]="!isValid"  (change)="updateTotal()" maxlength="10">
+          <input name="HomeCorners" #HomeCorners="ngModel" [(ngModel)]="service.formData.HomeCorners" class="form-control" (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
       <div class="col-sm">
@@ -54,14 +54,14 @@
         </div>
       <div class="col-sm">
         <div class="form-group">
-          <input name="AwayCorners" #AwayCorners="ngModel" [(ngModel)]="service.formData.AwayCorners" class="form-control" (change)="updateTotalAway()" maxlength="10">
+          <input name="AwayCorners" #AwayCorners="ngModel" [(ngModel)]="service.formData.AwayCorners" class="form-control" (change)="updateTotalAway()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
-          <input name="HomeSide" #HomeSide="ngModel" [(ngModel)]="service.formData.HomeSide" class="form-control" [class.is-invalid]="!isValid"  (change)="updateTotal()" maxlength="10">
+          <input name="HomeSide" #HomeSide="ngModel" [(ngModel)]="service.formData.HomeSide" class="form-control" (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
       <div class="col-sm">
@@ -71,14 +71,14 @@
         </div>
       <div class="col-sm">
         <div class="form-group">
-          <input name="AwaySide" #AwaySide="ngModel" [(ngModel)]="service.formData.AwaySide" class="form-control" (change)="updateTotalAway()" maxlength="10">
+          <input name="AwaySide" #AwaySide="ngModel" [(ngModel)]="service.formData.AwaySide" class="form-control" (change)="updateTotalAway()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
-          <input name="HomeFree" #HomeFree="ngModel" [(ngModel)]="service.formData.HomeFree" class="form-control" [class.is-invalid]="!isValid"  (change)="updateTotal()" maxlength="10">
+          <input name="HomeFree" #HomeFree="ngModel" [(ngModel)]="service.formData.HomeFree" class="form-control" (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
       <div class="col-sm">
@@ -88,14 +88,14 @@
         </div>
       <div class="col-sm">
         <div class="form-group">
-          <input name="AwayFree" #AwayFree="ngModel" [(ngModel)]="service.formData.AwayFree" class="form-control" (change)="updateTotalAway()" maxlength="10">
+          <input name="AwayFree" #AwayFree="ngModel" [(ngModel)]="service.formData.AwayFree" class="form-control" (change)="updateTotalAway()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
-          <input name="HomeTotal" #HomeTotal="ngModel" [(ngModel)]="service.formData.HomeTotal" class="form-control" readonly maxlength="10">
+          <input name="HomeTotal" #HomeTotal="ngModel" [(ngModel)]="service.formData.HomeTotal" class="form-control" readonly>
         </div>
       </div>
       <div class="col-sm">
@@ -105,14 +105,14 @@
         </div>
       <div class="col-sm">
         <div class="form-group">
-          <input name="AwayTotal" #AwayTotal="ngModel" [(ngModel)]="service.formData.AwayTotal" class="form-control" readonly maxlength="10">
+          <input name="AwayTotal" #AwayTotal="ngModel" [(ngModel)]="service.formData.AwayTotal" class="form-control" readonly>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
-          <input name="HomeXg" #HomeXg="ngModel" [(ngModel)]="service.formData.HomeXg" class="form-control" [class.is-invalid]="!isValid">
+          <input name="HomeXg" #HomeXg="ngModel" [(ngModel)]="service.formData.HomeXg" class="form-control" readonly>
         </div>
       </div>
       <div class="col-sm">
@@ -122,15 +122,23 @@
         </div>
       <div class="col-sm">
         <div class="form-group">
-          <input name="AwayXg" #AwayXg="ngModel" [(ngModel)]="service.formData.AwayXg" class="form-control" maxlength="5">
+          <input name="AwayXg" #AwayXg="ngModel" [(ngModel)]="service.formData.AwayXg" class="form-control" readonly>
         </div>
       </div>
     </div>
-    <div *ngIf="this.service.formData.DateTime == null" form-row>
+    <div form-row>
         <div class="col-sm">
             <div class="form-group">
               <label>Date</label>
-              <input name="DateTime" #DateTime="ngModel" [(ngModel)]="service.formData.DateTime" class="form-control" maxlength="5">
+              <input type="date" name="DateTime" #DateTime="ngModel" [(ngModel)]="service.formData.DateTime" class="form-control">
+            </div>
+        </div>
+      </div>
+      <div form-row>
+        <div class="col-sm">
+            <div class="form-group">
+              <label>Serie</label>
+              <input name="Serie" #Serie="ngModel" [(ngModel)]="service.formData.Serie" class="form-control">
             </div>
       </div>
       </div>

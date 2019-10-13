@@ -10,6 +10,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MatchesComponent implements OnInit {
   matchList;
+  sortSerie: string = '';
+  matchListSort: string[] = ["All"];
+  searchText
 
 
   constructor(private service: MatchService,
@@ -21,6 +24,19 @@ export class MatchesComponent implements OnInit {
 
   refreshList() {
     this.service.getMatchList().then(res => this.matchList = res);
+
+  }
+
+  updateSortList() {
+
+    for (var val of this.matchList) {
+      for (var item of this.matchList) {
+        if (item != val.Serie) {
+          this.matchList.push(val.Serie);
+        }
+      }
+    }
+    console.log(this.matchListSort);
 
   }
 

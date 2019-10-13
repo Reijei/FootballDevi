@@ -11,6 +11,34 @@ body{
 h1 {
   text-align: center;
 }
+.sort {
+  display: flex;
+  height: 27px;
+}
+
+.search-team {
+  max-width: 500px;
+  padding-bottom: 50px;
+  margin:auto;
+  display: flex;
+}
+
+.form-control {
+  box-shadow: 0 10px 40px 0 #B0C1D9;
+}
+.form-control::placeholder  {
+  font-family: FontAwesome;
+}
+
+.search {
+  display: flex;
+  height: 27px;
+}
+
+.sort p {
+  margin-right: 10px;
+}
+
 
 td:hover {
   cursor: pointer;
@@ -56,6 +84,12 @@ h2{
 .fl-table thead th {
   color: #ffffff;
   background: #4FC3A1;
+}
+
+input.form-control, input.form-control:focus {
+  background-color: unset;
+  color: #fff;
+  border: unset;
 }
 
 

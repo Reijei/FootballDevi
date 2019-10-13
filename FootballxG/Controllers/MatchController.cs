@@ -52,6 +52,7 @@ namespace FootballxG.Controllers
                             a.AwayTotal,
                             a.HomeXg,
                             a.AwayXg,
+                            a.Serie,
                         }).FirstOrDefault();
             var shot = (from a in _context.Shot
                            where a.MatchID == id
@@ -160,16 +161,18 @@ namespace FootballxG.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Match>> DeleteMatch(int? id)
         {
-            var match = await _context.Match.FindAsync(id);
-            if (match == null)
+            Match match = _context.Match.Include(y => y.Shot)
+                .SingleOrDefault(x => x.MatchID == id);
+
+            foreach (var item in match.Shot.ToList())
             {
-                return NotFound();
+                _context.Shot.Remove(item);
             }
 
             _context.Match.Remove(match);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
-            return match;
+            return Ok(match);
         }
 
         private bool MatchExists(int? id)

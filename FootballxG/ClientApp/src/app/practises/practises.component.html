@@ -1,0 +1,39 @@
+<div class="banner">
+  <h1>Practises</h1>
+</div>
+<div class="search-team">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search">
+  </div>
+<div class="table-wrapper">
+<table class="fl-table">
+<thead>
+<th>Date</th>
+<th>Team name</th>
+<th>Serie</th>
+<th>Goals</th>
+<th>Corners</th>
+<th>Side</th>
+<th>Total</th>
+<th>xG</th>
+<th><a class="btn btn-sm btn-success text-white" routerLink="/practise">Create new</a></th>
+</thead>
+<tbody>
+  <tr *ngFor="let item of practiseList | filter:searchText">
+      <td (click)="openForEdit(item.PractiseID)">{{item.DateTime}}</td>
+    <td (click)="openForEdit(item.PractiseID)">{{item.TeamName}}</td>
+    <td (click)="openForEdit(item.PractiseID)">{{item.Serie}}</td>
+    <td (click)="openForEdit(item.PractiseID)">{{item.Goals}}</td>
+    <td (click)="openForEdit(item.PractiseID)">{{item.Corners}}</td>
+    <td (click)="openForEdit(item.PractiseID)">{{item.Side}}</td>
+    <td (click)="openForEdit(item.PractiseID)">{{item.Total}}</td>
+    <td (click)="openForEdit(item.PractiseID)">{{item.Xg}}</td>
+    <td>
+      <a class="btn text-danger" (click)="onPractiseDelete(item.PractiseID)"><i class="fa fa-trash fa-lg"></i></a>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+<a class="btn btn-sm btn-success text-white" routerLink="/home">Back to home</a>
+

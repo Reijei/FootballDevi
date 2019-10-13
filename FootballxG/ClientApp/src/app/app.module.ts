@@ -21,6 +21,11 @@ import { PlayerComponent } from './teams/player/player.component';
 import { MatchesComponent } from './matches/matches.component';
 import { MatchComponent } from './matches/match/match.component';
 import { ShotComponent } from './matches/shot/shot.component';
+import { PractisesComponent } from './practises/practises.component';
+import { PractiseComponent } from './practises/practise/practise.component';
+import { PractiseShotComponent } from './practises/practise-shot/practise-shot.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DigitOnlyModule } from '@uiowa/digit-only';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,10 @@ import { ShotComponent } from './matches/shot/shot.component';
     PlayerComponent,
     MatchesComponent,
     MatchComponent,
-    ShotComponent
+    ShotComponent,
+    PractisesComponent,
+    PractiseComponent,
+    PractiseShotComponent
   ],
   imports: [
     BrowserModule,
@@ -42,13 +50,15 @@ import { ShotComponent } from './matches/shot/shot.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatDialogModule,
+    Ng2SearchPipeModule,
     BrowserAnimationsModule,
+    DigitOnlyModule,
     ToastrModule.forRoot({
       progressBar: true
     }),
     FormsModule
   ],
-  entryComponents: [PlayerComponent, ShotComponent],
+  entryComponents: [PlayerComponent, ShotComponent, PractiseShotComponent],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

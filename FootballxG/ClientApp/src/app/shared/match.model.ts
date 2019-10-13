@@ -15,4 +15,5 @@ export class Match {
   AwayTotal: number;
   HomeXg: number;
   AwayXg: number;
+  Serie: string;
 }

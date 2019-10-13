@@ -28,6 +28,9 @@ namespace FootballxG.Models
         public int? AwayTotal { get; set; }
         public float? HomeXg { get; set; }
         public float? AwayXg { get; set; }
+        [Column(TypeName = "nvarchar(50)")]
+        public string Serie { get; set; }
+
 
         public List<Shot> Shot { get; set; }
     }

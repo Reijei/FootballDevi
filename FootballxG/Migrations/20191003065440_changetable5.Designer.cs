@@ -4,14 +4,16 @@ using FootballxG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FootballxG.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191003065440_changetable5")]
+    partial class changetable5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,7 @@ namespace FootballxG.Migrations
 
             modelBuilder.Entity("FootballxG.Models.Match", b =>
                 {
-                    b.Property<int?>("MatchID")
+                    b.Property<int>("MatchID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -128,9 +130,6 @@ namespace FootballxG.Migrations
 
                     b.Property<int?>("Goals");
 
-                    b.Property<string>("Serie")
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<int?>("Side");
 
                     b.Property<string>("TeamName")
@@ -172,7 +171,7 @@ namespace FootballxG.Migrations
 
                     b.Property<int?>("Half");
 
-                    b.Property<int?>("MatchID");
+                    b.Property<int>("MatchID");
 
                     b.Property<string>("NoChange")
                         .HasColumnType("nvarchar(10)");
@@ -205,8 +204,6 @@ namespace FootballxG.Migrations
                     b.HasKey("ShotID");
 
                     b.HasIndex("MatchID");
-
-                    b.HasIndex("PractiseID");
 
                     b.ToTable("Shot");
                 });
@@ -245,11 +242,8 @@ namespace FootballxG.Migrations
                 {
                     b.HasOne("FootballxG.Models.Match", "Match")
                         .WithMany("Shot")
-                        .HasForeignKey("MatchID");
-
-                    b.HasOne("FootballxG.Models.Practise", "Practise")
-                        .WithMany("Shot")
-                        .HasForeignKey("PractiseID");
+                        .HasForeignKey("MatchID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

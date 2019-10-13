@@ -9,6 +9,35 @@ body{
   background: rgba( 71, 147, 227, 1);
 }
 
+.sort {
+  display: flex;
+  height: 27px;
+}
+
+.sort p {
+  margin-right: 10px;
+}
+
+.search-team {
+  max-width: 500px;
+  padding-bottom: 50px;
+  margin:auto;
+  display: flex;
+}
+input.form-control, input.form-control:focus {
+  background-color: unset;
+  color: #fff;
+  border: unset;
+}
+
+
+.form-control {
+  box-shadow: 0 10px 40px 0 #B0C1D9;
+}
+.form-control::placeholder  {
+  font-family: FontAwesome;
+}
+
 td:hover {
   cursor: pointer;
 }
@@ -29,7 +58,7 @@ h2{
 /* Table Styles */
 
 .table-wrapper{
-  margin: 10px 70px 70px;
+  margin: 10px 0px 70px;
   box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
 }
 

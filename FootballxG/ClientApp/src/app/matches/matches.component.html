@@ -1,6 +1,9 @@
 <div class="banner">
     <h1>Matches</h1>
   </div>
+  <div class="search-team">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search">
+    </div>
 <div class="table-wrapper">
 <table class="fl-table">
   <thead>
@@ -16,17 +19,17 @@
   <th><a class="btn btn-sm btn-success text-white" routerLink="/match">Create new</a></th>
   </thead>
   <tbody>
-    <tr *ngFor="let item of matchList">
-        <td (click)="openForEdit(item.MatchID)">{{item.DateTime}}</td>
-      <td (click)="openForEdit(item.MatchID)">{{item.HomeName}}</td>
-      <td (click)="openForEdit(item.MatchID)">{{item.AwayName}}</td>
-      <td (click)="openForEdit(item.MatchID)">{{item.HomeGoals}}</td>
-      <td (click)="openForEdit(item.MatchID)">{{item.AwayGoals}}</td>
-      <td (click)="openForEdit(item.MatchID)">{{item.HomeTotal}}</td>
-      <td (click)="openForEdit(item.MatchID)">{{item.AwayTotal}}</td>
-      <td (click)="openForEdit(item.MatchID)">{{item.HomeXg}}</td>
-      <td (click)="openForEdit(item.MatchID)">{{item.AwayXg}}</td>
-      <td>
+    <tr *ngFor="let item of matchList | filter:searchText">
+        <td (click)="openForEdit(item.MatchID)" *ngIf="item.Serie == this.sortSerie || this.sortSerie == ''">{{item.DateTime}}</td>
+      <td (click)="openForEdit(item.MatchID)" *ngIf="item.Serie == this.sortSerie || this.sortSerie == ''">{{item.HomeName}}</td>
+      <td (click)="openForEdit(item.MatchID)" *ngIf="item.Serie == this.sortSerie || this.sortSerie == ''">{{item.AwayName}}</td>
+      <td (click)="openForEdit(item.MatchID)" *ngIf="item.Serie == this.sortSerie || this.sortSerie == ''">{{item.HomeGoals}}</td>
+      <td (click)="openForEdit(item.MatchID)" *ngIf="item.Serie == this.sortSerie || this.sortSerie == ''">{{item.AwayGoals}}</td>
+      <td (click)="openForEdit(item.MatchID)" *ngIf="item.Serie == this.sortSerie || this.sortSerie == ''">{{item.HomeTotal}}</td>
+      <td (click)="openForEdit(item.MatchID)" *ngIf="item.Serie == this.sortSerie || this.sortSerie == ''">{{item.AwayTotal}}</td>
+      <td (click)="openForEdit(item.MatchID)" *ngIf="item.Serie == this.sortSerie || this.sortSerie == ''">{{item.HomeXg}}</td>
+      <td (click)="openForEdit(item.MatchID)" *ngIf="item.Serie == this.sortSerie || this.sortSerie == ''">{{item.AwayXg}}</td>
+      <td *ngIf="item.Serie == this.sortSerie || this.sortSerie == ''">
         <a class="btn text-danger" (click)="onMatchDelete(item.MatchID)"><i class="fa fa-trash fa-lg"></i></a>
       </td>
     </tr>

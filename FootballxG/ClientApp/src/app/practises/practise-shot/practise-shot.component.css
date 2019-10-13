@@ -1,10 +1,3 @@
-input {
-  text-align: center;
-}
-label {
-  display:  block;
-  text-align: center;
-}
 *{
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -19,13 +12,6 @@ body{
 td:hover {
   cursor: pointer;
 }
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 h2{
   text-align: center;
   font-size: 18px;
@@ -38,16 +24,15 @@ h2{
 /* Table Styles */
 
 .table-wrapper{
-  margin: 30px 0px 30px;
+  margin: 10px 70px 70px;
   box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
 }
 
-button[type=submit].btn{
-  border-radius: 5px;
-  background-color: #28a745;
-  border-color: #28a745;
-  color: #fff;
+#main-shot {
+  margin-bottom: 20px;
 }
+
+
 
 .fl-table {
   border-radius: 5px;
@@ -64,6 +49,36 @@ button[type=submit].btn{
 .fl-table td, .fl-table th {
   text-align: center;
   padding: 8px;
+}
+.shot-map-img {
+  height: 550px !important;
+  width: 860px !important;
+}
+
+.shot-map {
+  height: 550px !important;
+  width: 860px !important;
+  margin-left:  auto;
+  margin-right: auto;
+  margin-top: 30px;
+  background-image: url("../../../assets/images/half-rotate.png");
+  background-size: 100% 100%;
+}
+
+.circle {
+  display: block;
+  height: 13px;
+  width: 13px;
+  margin: 0;
+  position: relative;
+}
+
+.circle:before {
+  content: "\f1e3";  /* this is your text. You can also use UTF-8 character codes as I do here */
+  font-family: FontAwesome;
+  left:3px;
+  position:absolute;
+  top:-4px;
 }
 
 .fl-table td {

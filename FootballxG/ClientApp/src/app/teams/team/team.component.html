@@ -3,7 +3,7 @@
       <div class="col-sm">
     <div class="form-group">
       <label>Teamname</label>
-        <input name="TeamName" #TeamName="ngModel" [(ngModel)]="service.formData.TeamName" class="form-control" [class.is-invalid]="!isValid">
+        <input name="TeamName" #TeamName="ngModel" [(ngModel)]="service.formData.TeamName" class="form-control" [class.is-invalid]="!isValid"  maxlength="50">
     </div>
   </div>
 </div>
@@ -11,13 +11,13 @@
       <div class="col-sm">
           <div class="form-group">
             <label>Wins</label>
-              <input name="Wins" #Wins="ngModel" [(ngModel)]="service.formData.Wins" class="form-control">
+              <input name="Wins" #Wins="ngModel" [(ngModel)]="service.formData.Wins" class="form-control"  maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
           </div>
         </div>
       <div class="col-sm">
     <div class="form-group">
       <label>Loses</label>
-        <input name="Loses" #Loses="ngModel" [(ngModel)]="service.formData.Loses" class="form-control">
+        <input name="Loses" #Loses="ngModel" [(ngModel)]="service.formData.Loses" class="form-control"  maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
     </div>
   </div>
 </div>
@@ -25,13 +25,13 @@
     <div class="col-sm">
     <div class="form-group">
       <label>Serie</label>
-        <input name="Serie" #Serie="ngModel" [(ngModel)]="service.formData.Serie" class="form-control">
+        <input name="Serie" #Serie="ngModel" [(ngModel)]="service.formData.Serie" class="form-control"  maxlength="50">
     </div>
   </div>
     <div class="col-sm">
     <div class="form-group">
       <label>Position</label>
-        <input name="Position" #Position="ngModel" [(ngModel)]="service.formData.Position" class="form-control">
+        <input name="Position" #Position="ngModel" [(ngModel)]="service.formData.Position" class="form-control"  maxlength="2" inputmode="numeric" pattern="[0-9]*" digitOnly>
     </div>
   </div>
 </div>

@@ -24,6 +24,9 @@ namespace FootballxG.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Team>>> GetTeam()
         {
+            // userid testi
+            //string userId = User.Claims.First(c => c.Type == "UserID").Value;
+
             return await _context.Team.ToListAsync();
         }
 
@@ -120,7 +123,7 @@ namespace FootballxG.Controllers
                 }
                 foreach (var item in team.Player)
                 {
-                    if (item.PlayerID != 0)
+                    if (item.PlayerID == null)
                     {
                         _context.Player.Add(item);
 

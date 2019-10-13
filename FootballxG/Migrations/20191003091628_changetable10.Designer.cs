@@ -4,14 +4,16 @@ using FootballxG.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FootballxG.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191003091628_changetable10")]
+    partial class changetable10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,9 +130,6 @@ namespace FootballxG.Migrations
 
                     b.Property<int?>("Goals");
 
-                    b.Property<string>("Serie")
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<int?>("Side");
 
                     b.Property<string>("TeamName")
@@ -206,8 +205,6 @@ namespace FootballxG.Migrations
 
                     b.HasIndex("MatchID");
 
-                    b.HasIndex("PractiseID");
-
                     b.ToTable("Shot");
                 });
 
@@ -246,10 +243,6 @@ namespace FootballxG.Migrations
                     b.HasOne("FootballxG.Models.Match", "Match")
                         .WithMany("Shot")
                         .HasForeignKey("MatchID");
-
-                    b.HasOne("FootballxG.Models.Practise", "Practise")
-                        .WithMany("Shot")
-                        .HasForeignKey("PractiseID");
                 });
 #pragma warning restore 612, 618
         }

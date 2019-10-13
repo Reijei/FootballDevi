@@ -31,14 +31,50 @@ namespace FootballxG.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Practise>> GetPractise(int? id)
         {
-            var practise = await _context.Practise.FindAsync(id);
+            var match = (from a in _context.Practise
+                         where a.PractiseID == id
 
-            if (practise == null)
-            {
-                return NotFound();
-            }
+                         select new
+                         {
+                             a.PractiseID,
+                             a.DateTime,
+                             a.TeamName,
+                             a.Serie,
+                             a.Goals,
+                             a.Corners,
+                             a.Side,
+                             a.Free,
+                             a.Total,
+                             a.Xg,
+                         }).FirstOrDefault();
+            var shot = (from a in _context.Shot
+                        where a.PractiseID == id
 
-            return practise;
+                        select new
+                        {
+                            a.ShotID,
+                            a.DateTime,
+                            a.Time,
+                            a.Half,
+                            a.ShooterName,
+                            a.TeamName,
+                            a.Opponent,
+                            a.Assist,
+                            a.PositionX,
+                            a.PositionY,
+                            a.BodyPart,
+                            a.Result,
+                            a.Breakway,
+                            a.Pattern,
+                            a.BigChange,
+                            a.NoChange,
+                            a.Defenders,
+                            a.Xg,
+                            a.Comments,
+                            a.MatchID,
+                            a.PractiseID,
+                        }).ToList();
+            return Ok(new { match, shot });
         }
 
         // PUT: api/Practise/5
@@ -75,26 +111,61 @@ namespace FootballxG.Controllers
         [HttpPost]
         public async Task<ActionResult<Practise>> PostPractise(Practise practise)
         {
-            _context.Practise.Add(practise);
-            await _context.SaveChangesAsync();
+            try
+            {
 
-            return CreatedAtAction("GetPractise", new { id = practise.PractiseID }, practise);
+
+                if (practise.PractiseID == null)
+                {
+                    _context.Practise.Add(practise);
+
+                }
+                else
+                {
+                    _context.Entry(practise).State = EntityState.Modified;
+                }
+                foreach (var item in practise.Shot)
+                {
+                    if (item.ShotID == null)
+                    {
+                        _context.Shot.Add(item);
+
+                    }
+                    else
+                    {
+                        _context.Entry(item).State = EntityState.Modified;
+                    }
+
+                }
+
+
+                _context.SaveChanges();
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         // DELETE: api/Practise/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Practise>> DeletePractise(int? id)
         {
-            var practise = await _context.Practise.FindAsync(id);
-            if (practise == null)
+            Practise practise = _context.Practise.Include(y => y.Shot)
+                .SingleOrDefault(x => x.PractiseID == id);
+
+            foreach (var item in practise.Shot.ToList())
             {
-                return NotFound();
+                _context.Shot.Remove(item);
             }
 
             _context.Practise.Remove(practise);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
-            return practise;
+            return Ok(practise);
         }
 
         private bool PractiseExists(int? id)

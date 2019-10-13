@@ -8,19 +8,19 @@
     <div class="col-sm">
       <div class="form-group">
         <label>Player name</label>
-        <input name="PlayerName" #PlayerName="ngModel" [(ngModel)]="formData.PlayerName" class="form-control" [class.is-invalid]="!isValid">
+        <input name="PlayerName" #PlayerName="ngModel" [(ngModel)]="formData.PlayerName" class="form-control" [class.is-invalid]="!isValid"  maxlength="50">
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label>Player No</label>
-        <input name="No" #No="ngModel" [(ngModel)]="formData.No" class="form-control">
+        <input name="No" #No="ngModel" [(ngModel)]="formData.No" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label>Position</label>
-        <input name="Position" #Position="ngModel" [(ngModel)]="formData.Position" class="form-control">
+        <input name="Position" #Position="ngModel" [(ngModel)]="formData.Position" class="form-control" maxlength="50">
       </div>
     </div>
   </div>
@@ -28,19 +28,19 @@
     <div class="col-sm">
       <div class="form-group">
         <label>Matches</label>
-        <input name="Matches" #Matches="ngModel" [(ngModel)]="formData.Matches" class="form-control">
+        <input name="Matches" #Matches="ngModel" [(ngModel)]="formData.Matches" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label>Minutes</label>
-        <input name="Minutes" #Minutes="ngModel" [(ngModel)]="formData.Minutes" class="form-control">
+        <input name="Minutes" #Minutes="ngModel" [(ngModel)]="formData.Minutes" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label>Goals</label>
-        <input name="Goals" #Goals="ngModel" [(ngModel)]="formData.Goals" class="form-control" (change)="updateXg()">
+        <input name="Goals" #Goals="ngModel" [(ngModel)]="formData.Goals" class="form-control" (change)="updateXg()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
       </div>
     </div>
   </div>
@@ -48,13 +48,13 @@
     <div class="col-sm">
       <div class="form-group">
         <label>Passes</label>
-        <input name="Passes" #Passes="ngModel" [(ngModel)]="formData.Passes" class="form-control">
+        <input name="Passes" #Passes="ngModel" [(ngModel)]="formData.Passes" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label>Spots</label>
-        <input name="Spots" #Spots="ngModel" [(ngModel)]="formData.Spots" class="form-control">
+        <input name="Spots" #Spots="ngModel" [(ngModel)]="formData.Spots" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
       </div>
     </div>
   </div>
@@ -62,13 +62,13 @@
     <div class="col-sm">
       <div class="form-group">
         <label>Yellow cards</label>
-        <input name="CardYellow" #CardYellow="ngModel" [(ngModel)]="formData.CardYellow" class="form-control">
+        <input name="CardYellow" #CardYellow="ngModel" [(ngModel)]="formData.CardYellow" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label>Red cards</label>
-        <input name="CardRed" #CardRed="ngModel" [(ngModel)]="formData.CardRed" class="form-control">
+        <input name="CardRed" #CardRed="ngModel" [(ngModel)]="formData.CardRed" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
       </div>
     </div>
   </div>
@@ -76,19 +76,19 @@
     <div class="col-sm">
       <div class="form-group">
         <label>xG</label>
-        <input name="Xg" #Xg="ngModel" [(ngModel)]="formData.Xg" class="form-control" (change)="updateXg()">
+        <input name="Xg" #Xg="ngModel" [(ngModel)]="formData.Xg" class="form-control" (change)="updateXg()" maxlength="7">
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label>xG+-</label>
-        <input name="XgP" #XgP="ngModel" [(ngModel)]="formData.XgP" class="form-control">
+        <input name="XgP" #XgP="ngModel" [(ngModel)]="formData.XgP" class="form-control" maxlength="7">
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label>xA</label>
-        <input name="Xa" #Xa="ngModel" [(ngModel)]="formData.Xa" class="form-control">
+        <input name="Xa" #Xa="ngModel" [(ngModel)]="formData.Xa" class="form-control" maxlength="7">
       </div>
     </div>
   </div>
@@ -96,19 +96,19 @@
     <div class="col-sm">
       <div class="form-group">
         <label>xA+-</label>
-        <input name="XaP" #XaP="ngModel" [(ngModel)]="formData.XaP" class="form-control">
+        <input name="XaP" #XaP="ngModel" [(ngModel)]="formData.XaP" class="form-control" maxlength="7">
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label>xG90</label>
-        <input name="Xg90" #Xg90="ngModel" [(ngModel)]="formData.Xg90" class="form-control">
+        <input name="Xg90" #Xg90="ngModel" [(ngModel)]="formData.Xg90" class="form-control" maxlength="7">
       </div>
     </div>
     <div class="col-sm">
       <div class="form-group">
         <label>xA90</label>
-        <input name="Xa90" #Xa90="ngModel" [(ngModel)]="formData.Xa90" class="form-control">
+        <input name="Xa90" #Xa90="ngModel" [(ngModel)]="formData.Xa90" class="form-control" maxlength="7">
       </div>
     </div>
   </div>
