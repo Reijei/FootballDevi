@@ -13,6 +13,11 @@ export class HomeComponent implements OnInit {
   FieldY: number = 542;
   FieldX: number = 430;
 
+  Cross: string = '';
+  Pattern: string = '';
+  BigChange: string = '';
+  NoChange: string = '';
+
   PX: number = 0;
   PY: number = 0;
 
@@ -89,6 +94,29 @@ export class HomeComponent implements OnInit {
     }
     let xg = Math.exp(-dist / partMultiplier);
     xg = Math.round(xg * 1000) / 1000;
+
+    if (this.Pattern == 'Corner') {
+      xg = xg - 0.65;
+    } else if (this.Pattern == 'Side') {
+      xg = xg - 0.3;
+    } else if (this.Pattern == 'Toss') {
+      xg = xg - 0.35;
+    } else if (this.Pattern == 'Penalty') {
+      xg = xg + 2;
+    }
+
+    if (this.Cross == 'Yes') {
+      xg = xg - 0.3;
+    }
+
+    if (this.BigChange == 'Yes' ) {
+      xg = xg + 0.5;
+    }
+
+    if (this.NoChange == 'Yes' ) {
+      xg = xg - 0.5;
+    }
+
 
 
 

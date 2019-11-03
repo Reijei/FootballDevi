@@ -24,7 +24,28 @@ namespace FootballxG.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Practise>>> GetPractise()
         {
-            return await _context.Practise.ToListAsync();
+            //return await _context.Practise.ToListAsync();
+
+            string userId = User.Claims.First(c => c.Type == "UserID").Value;
+
+            var match = (from a in _context.Practise
+                         where a.UserID == userId
+
+                         select new
+                         {
+                             a.PractiseID,
+                             a.DateTime,
+                             a.TeamName,
+                             a.Serie,
+                             a.Goals,
+                             a.Corners,
+                             a.Side,
+                             a.Free,
+                             a.Total,
+                             a.Xg,
+                         }).ToList();
+            return Ok(new { match });
+
         }
 
         // GET: api/Practise/5
@@ -117,16 +138,19 @@ namespace FootballxG.Controllers
 
                 if (practise.PractiseID == null)
                 {
+                    practise.UserID = User.Claims.First(c => c.Type == "UserID").Value;
                     _context.Practise.Add(practise);
 
                 }
                 else
                 {
+                    practise.UserID = User.Claims.First(c => c.Type == "UserID").Value;
+
                     _context.Entry(practise).State = EntityState.Modified;
                 }
                 foreach (var item in practise.Shot)
                 {
-                    if (item.ShotID == null)
+                    if (item.ShotID == null || item.ShotID < 0)
                     {
                         _context.Shot.Add(item);
 

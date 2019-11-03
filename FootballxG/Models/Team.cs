@@ -19,6 +19,8 @@ namespace FootballxG.Models
         [Column(TypeName = "nvarchar(50)")]
         public string Serie { get; set; }
         public int? Position { get; set; }
+        [Column(TypeName = "nvarchar(50)")]
+        public string UserID { get; set; }
 
         public List<Player> Player { get; set; }
 

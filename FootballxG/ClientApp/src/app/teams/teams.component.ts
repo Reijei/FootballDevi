@@ -1,3 +1,4 @@
+import { Team } from './../shared/team.model';
 import { Component, OnInit } from '@angular/core';
 import { TeamService } from '../shared/team.service';
 import { Router } from '@angular/router';
@@ -10,9 +11,11 @@ import { distinct } from 'rxjs/operators';
   styleUrls: ['./teams.component.css']
 })
 export class TeamsComponent implements OnInit {
-  teamList;
+  teamList: Team[];
   sortSerie: string = '';
   teamListSort: string[] = ["All"];
+  searchText;
+  teamData: Team[];
 
   constructor(private service: TeamService,
     private router: Router,
@@ -23,7 +26,11 @@ export class TeamsComponent implements OnInit {
   }
 
   refreshList() {
-    this.service.getTeamList().then(res => this.teamList = res);
+    this.service.getTeamList().then(res=>{
+      this.teamList = res.team;
+    });
+
+
 
   }
 

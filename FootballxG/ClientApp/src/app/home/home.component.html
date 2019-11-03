@@ -32,7 +32,7 @@
       </div>
         <div class="side-inputs">
             <label>Cross</label>
-            <select>
+            <select [(ngModel)]="this.Cross" (change)="calculateXg()">
                 <option value="">-Select-</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -40,7 +40,7 @@
           </div>
           <div class="side-inputs">
             <label>Pattern</label>
-            <select>
+            <select [(ngModel)]="this.Pattern" (change)="calculateXg()">
               <option value="">-Select-</option>
               <option value="Regular">Regular</option>
               <option value="Corner">Corner</option>
@@ -52,7 +52,7 @@
         </div>
         <div class="side-inputs">
             <label>Big Change</label>
-            <select>
+            <select [(ngModel)]="this.BigChange" (change)="calculateXg()">
                 <option value="">-Select-</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -60,7 +60,7 @@
           </div>
           <div class="side-inputs">
             <label>No Change</label>
-            <select>
+            <select [(ngModel)]="this.NoChange" (change)="calculateXg()">
               <option value="">-Select-</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>

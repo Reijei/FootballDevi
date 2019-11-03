@@ -24,7 +24,7 @@ export class MatchService {
     return this.http.post(environment.apiURL + '/Match', body)
   }
 
-  getMatchList(){
+  getMatchList():any {
     return this.http.get(environment.apiURL+'/Match').toPromise();
   }
 

@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class TeamService {
   formData: Team;
   playersData: Player[];
+  teamData: Team[];
   constructor(private http: HttpClient) { }
 
 
@@ -24,7 +25,7 @@ export class TeamService {
   }
 
 
-  getTeamList() {
+  getTeamList():any {
     return this.http.get(environment.apiURL + '/Team').toPromise();
   }
 

@@ -84,7 +84,7 @@
                 <div class="col-sm">
                   <div class="side-inputs">
                       <label>Breakway</label>
-                      <select name="Breakway" #Breakway="ngModel" [(ngModel)]="formData.Breakway" class="form-control"  maxlength="10">
+                      <select  (change)="calculateXg()" name="Breakway" #Breakway="ngModel" [(ngModel)]="formData.Breakway" class="form-control"  maxlength="10">
                           <option value="">-Select-</option>
                           <option value="Yes">Yes</option>
                           <option value="No">No</option>
@@ -94,7 +94,7 @@
                   <div class="col-sm">
                     <div class="side-inputs">
                         <label>Pattern</label>
-                        <select name="Pattern" #Pattern="ngModel" [(ngModel)]="formData.Pattern" class="form-control"  maxlength="10">
+                        <select  (change)="calculateXg()" name="Pattern" #Pattern="ngModel" [(ngModel)]="formData.Pattern" class="form-control"  maxlength="10">
                             <option value="">-Select-</option>
                             <option value="Regular">Regular</option>
                             <option value="Corner">Corner</option>
@@ -110,7 +110,7 @@
                     <div class="col-sm">
                   <div class="side-inputs">
                       <label>BigChange</label>
-                      <select name="BigChange" #BigChange="ngModel" [(ngModel)]="formData.BigChange" class="form-control" maxlength="10">
+                      <select  (change)="calculateXg()" name="BigChange" #BigChange="ngModel" [(ngModel)]="formData.BigChange" class="form-control" maxlength="10">
                           <option value="">-Select-</option>
                           <option value="Yes">Yes</option>
                           <option value="No">No</option>
@@ -120,7 +120,7 @@
                   <div class="col-sm">
                   <div class="side-inputs">
                       <label>NoChange</label>
-                      <select name="NoChange" #NoChange="ngModel" [(ngModel)]="formData.NoChange" class="form-control" maxlength="10">
+                      <select  (change)="calculateXg()" name="NoChange" #NoChange="ngModel" [(ngModel)]="formData.NoChange" class="form-control" maxlength="10">
                           <option value="">-Select-</option>
                           <option value="Yes">Yes</option>
                           <option value="No">No</option>

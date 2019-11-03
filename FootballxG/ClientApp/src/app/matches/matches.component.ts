@@ -1,3 +1,4 @@
+import { Match } from './../shared/match.model';
 import { Component, OnInit } from '@angular/core';
 import { MatchService } from '../shared/match.service';
 import { Router } from '@angular/router';
@@ -23,7 +24,7 @@ export class MatchesComponent implements OnInit {
   }
 
   refreshList() {
-    this.service.getMatchList().then(res => this.matchList = res);
+    this.service.getMatchList().then(res => this.matchList = res.match);
 
   }
 

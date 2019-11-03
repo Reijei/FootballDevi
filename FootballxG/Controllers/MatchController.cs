@@ -24,7 +24,36 @@ namespace FootballxG.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Match>>> GetMatch()
         {
-            return await _context.Match.ToListAsync();
+            // return await _context.Match.ToListAsync();
+
+            string userId = User.Claims.First(c => c.Type == "UserID").Value;
+
+            var match = (from a in _context.Match
+                         where a.UserID == userId
+
+                         select new
+                         {
+                             a.MatchID,
+                             a.DateTime,
+                             a.HomeName,
+                             a.AwayName,
+                             a.HomeGoals,
+                             a.AwayGoals,
+                             a.HomeCorners,
+                             a.AwayCorners,
+                             a.HomeSide,
+                             a.AwaySide,
+                             a.HomeFree,
+                             a.AwayFree,
+                             a.HomeTotal,
+                             a.AwayTotal,
+                             a.HomeXg,
+                             a.AwayXg,
+                             a.Serie,
+                         }).ToList();
+
+            return Ok(new { match });
+
         }
 
         // GET: api/Match/5
@@ -124,16 +153,20 @@ namespace FootballxG.Controllers
 
                 if (match.MatchID == null)
                 {
+                    match.UserID = User.Claims.First(c => c.Type == "UserID").Value;
+
                     _context.Match.Add(match);
 
                 }
                 else
                 {
+                    match.UserID = User.Claims.First(c => c.Type == "UserID").Value;
+
                     _context.Entry(match).State = EntityState.Modified;
                 }
                 foreach (var item in match.Shot)
                 {
-                    if (item.ShotID == null)
+                    if (item.ShotID < 0 || item.ShotID == null)
                     {
                         _context.Shot.Add(item);
 

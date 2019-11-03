@@ -3,7 +3,7 @@
       <div *ngIf="this.service.formData.DateTime != null" form-row>
           <div class="col-sm">
               <div class="form-group">
-                  <h3 id="date">Date: {{this.date}}</h3>
+                  <h3 id="date">Date: {{service.formData.DateTime}}</h3>
               </div>
         </div>
         </div>
@@ -128,7 +128,7 @@
     </div>
     <div form-row>
         <div class="col-sm">
-            <div class="form-group">
+            <div class="form-group" *ngIf="service.formData.DateTime == null">
               <label>Date</label>
               <input type="date" name="DateTime" #DateTime="ngModel" [(ngModel)]="service.formData.DateTime" class="form-control">
             </div>
@@ -145,7 +145,7 @@
   </div>
     <div class="table-wrapper">
       <h3>{{this.service.formData.HomeName}}</h3>
-      <table class="fl-table">
+      <table class="fl-table" *ngIf="service.formData.HomeName != ''">
     <thead>
         <th>Shootername</th>
         <th>Time</th>
@@ -189,7 +189,7 @@
 </div>
 <div class="table-wrapper">
     <h3>{{this.service.formData.AwayName}}</h3>
-    <table class="fl-table">
+    <table class="fl-table" *ngIf="service.formData.AwayName != ''">
   <thead>
     <th>Shootername</th>
     <th>Time</th>

@@ -22,7 +22,7 @@ export class PractisesComponent implements OnInit {
   }
 
   refreshList() {
-    this.service.getPractiseList().then(res => this.practiseList = res);
+    this.service.getPractiseList().then(res => this.practiseList = res.match);
 
   }
 

@@ -22,12 +22,28 @@ namespace FootballxG.Controllers
 
         // GET: api/Team
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Team>>> GetTeam()
+        public async Task<ActionResult<Team>> GetTeam()
         {
-            // userid testi
-            //string userId = User.Claims.First(c => c.Type == "UserID").Value;
 
-            return await _context.Team.ToListAsync();
+            // userid testi
+            string userId = User.Claims.First(c => c.Type == "UserID").Value;
+
+            var team = (from a in _context.Team
+                        where a.UserID == userId
+
+                        select new
+                        {
+                            a.TeamID,
+                            a.TeamName,
+                            a.Wins,
+                            a.Loses,
+                            a.Serie,
+                            a.Position,
+                        }).ToList();
+
+            return Ok(new { team });
+
+           // return await _context.Team.ToListAsync();
         }
 
         // GET: api/Team/5
@@ -114,16 +130,20 @@ namespace FootballxG.Controllers
 
                 if (team.TeamID == null)
                 {
+
+                    team.UserID = User.Claims.First(c => c.Type == "UserID").Value;
                     _context.Team.Add(team);
 
                 }
                 else
                 {
+                    team.UserID = User.Claims.First(c => c.Type == "UserID").Value;
+
                     _context.Entry(team).State = EntityState.Modified;
                 }
                 foreach (var item in team.Player)
                 {
-                    if (item.PlayerID == null)
+                    if (item.PlayerID < 0 || item.PlayerID == null)
                     {
                         _context.Player.Add(item);
 

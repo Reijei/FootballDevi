@@ -22,7 +22,8 @@ namespace FootballxG.Models
         public int? Free { get; set; }
         public int? Total { get; set; }
         public float? Xg { get; set; }
-
+        [Column(TypeName = "nvarchar(50)")]
+        public string UserID { get; set; }
 
         public List<Shot> Shot { get; set; }
     }

@@ -82,7 +82,7 @@ export class ShotComponent implements OnInit {
       y = this.FieldY - y;
       y = (y / this.OneMeter);
       y = Math.round(y * 10) / 10;
-      this.Y = y;
+      this.formData.PositionY = y;
 
       if(x > this.FieldX) {
         this.PX = x - 10;
@@ -90,14 +90,14 @@ export class ShotComponent implements OnInit {
         x = x - this.FieldX;
         x = x / this.OneMeter;
         x = Math.round(x * 10) / 10;
-        this.X = x;
+        this.formData.PositionX = x;
       } else {
         this.PX = x - 10;
 
         x = this.FieldX - x;
         x = (x / this.OneMeter);
         x = Math.round(x * 10) / 10;
-        this.X = x;
+        this.formData.PositionX = x;
       }
 
 
@@ -106,7 +106,7 @@ export class ShotComponent implements OnInit {
     }
 
     calculateXg() {
-      let dist = Math.sqrt(Math.pow(this.X, 2) + Math.pow(this.Y, 2));
+      let dist = Math.sqrt(Math.pow(this.formData.PositionX, 2) + Math.pow(this.formData.PositionY, 2));
       let partMultiplier = 7.1;
       if(this.part == "Head") {
         partMultiplier = 4.4;
@@ -114,6 +114,27 @@ export class ShotComponent implements OnInit {
       let xg = Math.exp(-dist / partMultiplier);
       xg = Math.round(xg * 1000) / 1000;
 
+      if (this.formData.Pattern == 'Corner') {
+        xg = xg - 0.65;
+      } else if (this.formData.Pattern == 'Side') {
+        xg = xg - 0.3;
+      } else if (this.formData.Pattern == 'Toss') {
+        xg = xg - 0.35;
+      } else if (this.formData.Pattern == 'Penalty') {
+        xg = xg + 2;
+      }
+
+      if (this.formData.Breakway == 'Yes') {
+        xg = xg - 0.3;
+      }
+
+      if (this.formData.BigChange == 'Yes' ) {
+        xg = xg + 0.5;
+      }
+
+      if (this.formData.NoChange == 'Yes' ) {
+        xg = xg - 0.5;
+      }
 
 
       this.formData.Xg = xg;

@@ -19,7 +19,7 @@
       <div class="col-sm">
         <div class="form-group">
           <label>Goals</label>
-          <input name="Goals" #Goals="ngModel" [(ngModel)]="service.formData.Goals" class="form-control" [class.is-invalid]="!isValid">
+          <input name="Goals" #Goals="ngModel" [(ngModel)]="service.formData.Goals" class="form-control" [class.is-invalid]="!isValid" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
     </div>
@@ -27,7 +27,7 @@
       <div class="col-sm">
         <div class="form-group">
           <label>Corners</label>
-          <input name="Corners" #Corners="ngModel" [(ngModel)]="service.formData.Corners" class="form-control" [class.is-invalid]="!isValid" (change)="updateTotal()">
+          <input name="Corners" #Corners="ngModel" [(ngModel)]="service.formData.Corners" class="form-control" [class.is-invalid]="!isValid" (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
 
@@ -36,7 +36,7 @@
       <div class="col-sm">
         <div class="form-group">
           <label>Sides</label>
-          <input name="Side" #Side="ngModel" [(ngModel)]="service.formData.Side" class="form-control" [class.is-invalid]="!isValid" (change)="updateTotal()">
+          <input name="Side" #Side="ngModel" [(ngModel)]="service.formData.Side" class="form-control" [class.is-invalid]="!isValid" (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
       <div class="col-sm">
         <div class="form-group">
           <label>Free kicks</label>
-          <input name="Free" #Free="ngModel" [(ngModel)]="service.formData.Free" class="form-control" [class.is-invalid]="!isValid"  (change)="updateTotal()">
+          <input name="Free" #Free="ngModel" [(ngModel)]="service.formData.Free" class="form-control" [class.is-invalid]="!isValid"  (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
     </div>

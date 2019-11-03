@@ -24,7 +24,7 @@ export class PractiseService {
     return this.http.post(environment.apiURL + '/Practise', body)
   }
 
-  getPractiseList(){
+  getPractiseList():any {
     return this.http.get(environment.apiURL+'/Practise').toPromise();
   }
 
