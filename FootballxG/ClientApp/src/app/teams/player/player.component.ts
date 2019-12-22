@@ -52,6 +52,43 @@ export class PlayerComponent implements OnInit {
     else {
       this.formData.XgP = this.formData.Goals - this.formData.Xg;
     }
+
+    if (this.formData.Minutes != 0) {
+      this.updateX90();
+    }
+  }
+
+  updateXa(){
+    if (this.formData.Xa == 0 || this.formData.Passes == 0) {
+      this.formData.XaP = 0;
+    }
+    else {
+      this.formData.XaP = this.formData.Passes - this.formData.Xa;
+    }
+
+    if (this.formData.Minutes != 0) {
+      this.updateXa90();
+    }
+  }
+
+  updateX90(){
+    if (this.formData.Xg == 0 || this.formData.Minutes == 0) {
+      this.formData.Xg90 = 0;
+    }
+    else {
+      this.formData.Xg90 = this.formData.Xg / (this.formData.Minutes / 90);
+      this.formData.Xg90 = Math.round(this.formData.Xg90 * 1000) / 1000;
+    }
+  }
+
+  updateXa90(){
+    if (this.formData.Xa== 0 || this.formData.Minutes == 0) {
+      this.formData.Xa90 = 0;
+    }
+    else {
+      this.formData.Xa90 = this.formData.Xa / (this.formData.Minutes / 90);
+      this.formData.Xa90 = Math.round(this.formData.Xa90 * 1000) / 1000;
+    }
   }
 
 

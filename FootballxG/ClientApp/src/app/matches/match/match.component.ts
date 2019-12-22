@@ -16,6 +16,8 @@ export class MatchComponent implements OnInit {
   isValid: boolean = true;
   Id = '';
   date = '';
+  searchText
+  searchTextAway
 
   emptyHome = true;
   emptyAway = true;

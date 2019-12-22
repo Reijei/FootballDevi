@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace FootballxG.Migrations
+namespace FootballxG.Migrations.Authentication
 {
-    public partial class Initialcreatepublishdata : Migration
+    public partial class Initial6 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

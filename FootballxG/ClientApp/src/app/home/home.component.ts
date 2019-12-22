@@ -96,28 +96,26 @@ export class HomeComponent implements OnInit {
     xg = Math.round(xg * 1000) / 1000;
 
     if (this.Pattern == 'Corner') {
-      xg = xg - 0.65;
+      xg = xg * 0.65;
     } else if (this.Pattern == 'Side') {
-      xg = xg - 0.3;
+      xg = xg * 0.65;
     } else if (this.Pattern == 'Toss') {
-      xg = xg - 0.35;
-    } else if (this.Pattern == 'Penalty') {
-      xg = xg + 2;
+      xg = xg * 0.65;
     }
 
     if (this.Cross == 'Yes') {
-      xg = xg - 0.3;
+      xg = xg * 0.75;
     }
 
     if (this.BigChange == 'Yes' ) {
-      xg = xg + 0.5;
+      xg = xg * 1.3;
     }
 
     if (this.NoChange == 'Yes' ) {
-      xg = xg - 0.5;
+      xg = xg * 0.75;
     }
 
-
+    xg = Math.round(xg * 1000) / 1000;
 
 
     this.Xg = xg;

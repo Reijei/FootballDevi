@@ -34,7 +34,7 @@
     <div class="col-sm">
       <div class="form-group">
         <label>Minutes</label>
-        <input name="Minutes" #Minutes="ngModel" [(ngModel)]="formData.Minutes" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
+        <input name="Minutes" #Minutes="ngModel" [(ngModel)]="formData.Minutes" class="form-control" (change)="updateX90()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
       </div>
     </div>
     <div class="col-sm">
@@ -48,7 +48,7 @@
     <div class="col-sm">
       <div class="form-group">
         <label>Passes</label>
-        <input name="Passes" #Passes="ngModel" [(ngModel)]="formData.Passes" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
+        <input name="Passes" #Passes="ngModel" [(ngModel)]="formData.Passes" class="form-control" (change)="updateXa()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
       </div>
     </div>
     <div class="col-sm">
@@ -88,7 +88,7 @@
     <div class="col-sm">
       <div class="form-group">
         <label>xA</label>
-        <input name="Xa" #Xa="ngModel" [(ngModel)]="formData.Xa" class="form-control" maxlength="7">
+        <input name="Xa" #Xa="ngModel" [(ngModel)]="formData.Xa" (change)="updateXa()" class="form-control" maxlength="7">
       </div>
     </div>
   </div>

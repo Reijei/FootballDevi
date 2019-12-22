@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL : 'https://footballxg.azurewebsites.net/api'
+    apiURL: 'http://localhost:62549/api'
 };
 
 /*

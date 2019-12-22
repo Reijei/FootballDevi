@@ -20,6 +20,24 @@ button[type=submit].btn{
   color: #fff;
 }
 
+.sort {
+  display: flex;
+  height: 27px;
+}
+.search, .search::placeholder {
+  border: 1px solid #636b7b !important;
+  color: #fff !important;
+  text-align: left;
+}
+.form-control .search {
+  border: 1px solid #636b7b !important;
+  color: #fff !important;
+}
+
+.form-control::placeholder  {
+  font-family: FontAwesome;
+}
+
 #date {
   text-align: center;
   margin-bottom: 30px;

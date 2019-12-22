@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootballxG.Migrations.Authentication
 {
     [DbContext(typeof(AuthenticationContext))]
-    [Migration("20191103091249_Initial-createpublish23")]
-    partial class Initialcreatepublish23
+    [Migration("20191103093328_Initial7")]
+    partial class Initial7
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -14,5 +14,7 @@ namespace FootballxG.Models
         }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FootballxG.Migrations.Authentication
 {
-    public partial class Initialcreatepublish : Migration
+    public partial class Initial7 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent }
     ]
   },
-  {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
+  {path:'home',component:HomeComponent},
   {path: 'teams', component: TeamsComponent},
   {path: 'team', children: [
     {path: '', component: TeamComponent},

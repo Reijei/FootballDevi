@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootballxG.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20191003065351_changetable4")]
-    partial class changetable4
+    [Migration("20191103094457_Initial-data")]
+    partial class Initialdata
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace FootballxG.Migrations
 
             modelBuilder.Entity("FootballxG.Models.Match", b =>
                 {
-                    b.Property<int>("MatchID")
+                    b.Property<int?>("MatchID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -60,6 +60,9 @@ namespace FootballxG.Migrations
                     b.Property<float?>("HomeXg");
 
                     b.Property<string>("Serie")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserID")
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("MatchID");
@@ -130,12 +133,18 @@ namespace FootballxG.Migrations
 
                     b.Property<int?>("Goals");
 
+                    b.Property<string>("Serie")
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<int?>("Side");
 
                     b.Property<string>("TeamName")
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int?>("Total");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<float?>("Xg");
 
@@ -205,6 +214,8 @@ namespace FootballxG.Migrations
 
                     b.HasIndex("MatchID");
 
+                    b.HasIndex("PractiseID");
+
                     b.ToTable("Shot");
                 });
 
@@ -222,6 +233,9 @@ namespace FootballxG.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("TeamName")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserID")
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int?>("Wins");
@@ -243,6 +257,10 @@ namespace FootballxG.Migrations
                     b.HasOne("FootballxG.Models.Match", "Match")
                         .WithMany("Shot")
                         .HasForeignKey("MatchID");
+
+                    b.HasOne("FootballxG.Models.Practise", "Practise")
+                        .WithMany("Shot")
+                        .HasForeignKey("PractiseID");
                 });
 #pragma warning restore 612, 618
         }

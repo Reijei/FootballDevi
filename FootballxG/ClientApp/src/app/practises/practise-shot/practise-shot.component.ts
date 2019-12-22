@@ -103,40 +103,42 @@ export class PractiseShotComponent implements OnInit {
       }
 
 
-
+      console.log(this.formData.PositionX);
+      console.log(this.formData.PositionY);
       this.calculateXg();
     }
 
     calculateXg() {
-      let dist = Math.sqrt(Math.pow(this.X, 2) + Math.pow(this.Y, 2));
+      let dist = Math.sqrt(Math.pow(this.formData.PositionX, 2) + Math.pow(this.formData.PositionY, 2));
       let partMultiplier = 7.1;
       if(this.part == "Head") {
         partMultiplier = 4.4;
       }
       let xg = Math.exp(-dist / partMultiplier);
-      xg = Math.round(xg * 1000) / 1000;
+
+      console.log(xg);
 
       if (this.formData.Pattern == 'Corner') {
-        xg = xg - 0.65;
+        xg = xg * 0.65;
       } else if (this.formData.Pattern == 'Side') {
-        xg = xg - 0.3;
+        xg = xg * 0.65;
       } else if (this.formData.Pattern == 'Toss') {
-        xg = xg - 0.35;
-      } else if (this.formData.Pattern == 'Penalty') {
-        xg = xg + 2;
+        xg = xg * 0.65;
       }
 
       if (this.formData.Breakway == 'Yes') {
-        xg = xg - 0.3;
+        xg = xg * 0.75;
       }
 
       if (this.formData.BigChange == 'Yes' ) {
-        xg = xg + 0.5;
+        xg = xg * 1.3;
       }
 
       if (this.formData.NoChange == 'Yes' ) {
-        xg = xg - 0.5;
+        xg = xg * 0.75;
       }
+
+      xg = Math.round(xg * 1000) / 1000;
 
 
       this.formData.Xg = xg;
@@ -149,7 +151,7 @@ export class PractiseShotComponent implements OnInit {
 console.log(form.value);
 
       if (this.validateForm(form.value)) {
-        if (this.data.playeIndex == null) {
+        if (this.data.shotIndex == null) {
           this.practiseService.shotData.push(form.value);
         } else {
           this.practiseService.shotData[this.data.shotIndex] = form.value;

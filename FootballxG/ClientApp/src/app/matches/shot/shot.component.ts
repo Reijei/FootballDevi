@@ -60,8 +60,9 @@ export class ShotComponent implements OnInit {
           Comments: '',
         }
 
-        console.log(this.data.TeamName);
+        console.log(this.data.shotIndex + "asd");
       } else {
+        console.log(this.data.shotIndex + "asdasd");
         this.formData = Object.assign({}, this.matchService.shotData[this.data.shotIndex]);
       }
 
@@ -115,28 +116,26 @@ export class ShotComponent implements OnInit {
       xg = Math.round(xg * 1000) / 1000;
 
       if (this.formData.Pattern == 'Corner') {
-        xg = xg - 0.65;
+        xg = xg * 0.65;
       } else if (this.formData.Pattern == 'Side') {
-        xg = xg - 0.3;
+        xg = xg * 0.65;
       } else if (this.formData.Pattern == 'Toss') {
-        xg = xg - 0.35;
-      } else if (this.formData.Pattern == 'Penalty') {
-        xg = xg + 2;
+        xg = xg * 0.65;
       }
 
       if (this.formData.Breakway == 'Yes') {
-        xg = xg - 0.3;
+        xg = xg * 0.75;
       }
 
       if (this.formData.BigChange == 'Yes' ) {
-        xg = xg + 0.5;
+        xg = xg * 1.3;
       }
 
       if (this.formData.NoChange == 'Yes' ) {
-        xg = xg - 0.5;
+        xg = xg * 0.75;
       }
 
-
+      xg = Math.round(xg * 1000) / 1000;
       this.formData.Xg = xg;
     }
 
@@ -146,9 +145,11 @@ export class ShotComponent implements OnInit {
     onSubmit(form: NgForm) {
 
       if (this.validateForm(form.value)) {
-        if (this.data.playeIndex == null) {
+        if (this.data.shotIndex == null) {
+          console.log(this.data.shotIndex + "submit if");
           this.matchService.shotData.push(form.value);
         } else {
+          console.log(this.data.shotIndex);
           this.matchService.shotData[this.data.shotIndex] = form.value;
         }
         this.dialogRef.close();

@@ -14,42 +14,34 @@
           <input name="TeamName" #TeamName="ngModel" [(ngModel)]="service.formData.TeamName" class="form-control" [class.is-invalid]="!isValid" maxlength="50">
         </div>
       </div>
-    </div>
-    <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
           <label>Goals</label>
-          <input name="Goals" #Goals="ngModel" [(ngModel)]="service.formData.Goals" class="form-control" [class.is-invalid]="!isValid" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
+          <input name="Goals" #Goals="ngModel" [(ngModel)]="service.formData.Goals" class="form-control" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
-      </div>
+        </div>
     </div>
     <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
           <label>Corners</label>
-          <input name="Corners" #Corners="ngModel" [(ngModel)]="service.formData.Corners" class="form-control" [class.is-invalid]="!isValid" (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
+          <input name="Corners" #Corners="ngModel" [(ngModel)]="service.formData.Corners" class="form-control" (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
       </div>
-
-    </div>
-    <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
           <label>Sides</label>
-          <input name="Side" #Side="ngModel" [(ngModel)]="service.formData.Side" class="form-control" [class.is-invalid]="!isValid" (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
+          <input name="Side" #Side="ngModel" [(ngModel)]="service.formData.Side" class="form-control" (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
-      </div>
-
     </div>
-    <div class="form-row">
+  </div>
+  <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
           <label>Free kicks</label>
-          <input name="Free" #Free="ngModel" [(ngModel)]="service.formData.Free" class="form-control" [class.is-invalid]="!isValid"  (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
+          <input name="Free" #Free="ngModel" [(ngModel)]="service.formData.Free" class="form-control" (change)="updateTotal()" maxlength="5" inputmode="numeric" pattern="[0-9]*" digitOnly>
         </div>
-      </div>
     </div>
-    <div class="form-row">
       <div class="col-sm">
         <div class="form-group">
           <label>Total</label>
@@ -64,8 +56,6 @@
           <input name="Xg" #Xg="ngModel" [(ngModel)]="service.formData.Xg" class="form-control">
         </div>
       </div>
-    </div>
-    <div form-row>
         <div class="col-sm">
             <div class="form-group">
               <label>Date</label>
@@ -83,7 +73,14 @@
       </div>
   </div>
     <div class="table-wrapper">
-      <h3>{{this.service.formData.TeamName}}</h3>
+        <div class="row">
+            <div class="col-sm-5">
+                <h3>{{this.service.formData.TeamName}}</h3>
+            </div>
+            <div class="col-sm-5">
+                <input class="form-control search" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search">
+              </div>
+          </div>
       <table class="fl-table">
     <thead>
         <th>Team</th>
@@ -104,7 +101,7 @@
       </th>
     </thead>
     <tbody>
-      <tr *ngFor="let item of service.shotData; let i=index;">
+      <tr *ngFor="let item of service.shotData | filter:searchText;let i=index;">
           <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.ShooterName}}</td>
           <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.Time}}</td>
           <td *ngIf="item.TeamName == this.service.formData.TeamName">{{item.Half}}</td>

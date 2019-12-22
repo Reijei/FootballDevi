@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace FootballxG.Migrations
+namespace FootballxG.Migrations.Authentication
 {
-    public partial class changetable2 : Migration
+    public partial class Initial4 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

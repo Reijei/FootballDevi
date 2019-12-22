@@ -18,6 +18,7 @@ export class PractiseComponent implements OnInit {
   isValid: boolean = true;
   Id = '';
   date = '';
+  searchText
 
 
   constructor(public service: PractiseService,
