@@ -31,7 +31,7 @@ namespace FootballxG
 
 
             services.AddMvc()
-               .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+               .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                .AddJsonOptions(options => {
                    options.SerializerSettings.DateFormatString = "dd/mm/yy";
                    var resolver = options.SerializerSettings.ContractResolver;

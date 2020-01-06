@@ -8,8 +8,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class UserService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-    readonly BaseURI = 'http://localhost:62549/api';
-    //readonly BaseURI = 'https://footballxg.azurewebsites.net/api';
+    //readonly BaseURI = 'http://localhost:62549/api';
+    readonly BaseURI = 'http://footballxg.gear.host//api';
 
   formModel = this.fb.group({
     UserName: ['', Validators.required],
