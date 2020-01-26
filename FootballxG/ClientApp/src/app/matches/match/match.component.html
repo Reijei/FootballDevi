@@ -66,7 +66,7 @@
       </div>
       <div class="col-sm">
           <div class="form-group">
-            <h4>Sides</h4>
+            <h4>Side freekicks</h4>
           </div>
         </div>
       <div class="col-sm">
@@ -83,7 +83,7 @@
       </div>
       <div class="col-sm">
           <div class="form-group">
-            <h4>Free kicks</h4>
+            <h4>Direct freekicks</h4>
           </div>
         </div>
       <div class="col-sm">
@@ -100,7 +100,7 @@
       </div>
       <div class="col-sm">
           <div class="form-group">
-            <h4>Total</h4>
+            <h4>Total setpieces</h4>
           </div>
         </div>
       <div class="col-sm">
@@ -149,7 +149,7 @@
             <h3>{{this.service.formData.HomeName}}</h3>
         </div>
         <div class="col-sm-5">
-            <input class="form-control search" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search home">
+            <input class="form-control search" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search home" *ngIf="service.formData.HomeName != ''">
           </div>
       </div>
       <table class="fl-table" *ngIf="service.formData.HomeName != ''">
@@ -164,8 +164,8 @@
         <th>Result</th>
         <th>Cross</th>
         <th>Pattern</th>
-        <th>Big change</th>
-        <th>No change</th>
+        <th>Big chance</th>
+        <th>No chance</th>
         <th>Defenders</th>
         <th>xG</th>
       <th><a class="btn btn-sm btn-success text-white" (click)="EditShotHome(null, service.formData.MatchID)"><i class="fa fa-plus"></i> Add Shot</a>
@@ -200,7 +200,7 @@
             <h3>{{this.service.formData.AwayName}}</h3>
         </div>
         <div class="col-sm-5">
-            <input class="form-control search" type="text" name="search" [(ngModel)]="searchTextAway" autocomplete="off" placeholder="&#61442;  Search away">
+            <input class="form-control search" type="text" name="search" [(ngModel)]="searchTextAway" autocomplete="off" placeholder="&#61442;  Search away" *ngIf="service.formData.AwayName != ''">
           </div>
       </div>
     <table class="fl-table" *ngIf="service.formData.AwayName != ''">
@@ -215,8 +215,8 @@
     <th>Result</th>
     <th>Cross</th>
     <th>Pattern</th>
-    <th>Big change</th>
-    <th>No change</th>
+    <th>Big chance</th>
+    <th>No chance</th>
     <th>Defenders</th>
     <th>xG</th>
     <th><a class="btn btn-sm btn-success text-white" (click)="EditShotAway(null, service.formData.MatchID)"><i class="fa fa-plus"></i> Add Shot</a>

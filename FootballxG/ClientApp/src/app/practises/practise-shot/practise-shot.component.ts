@@ -124,6 +124,10 @@ export class PractiseShotComponent implements OnInit {
         xg = xg * 0.65;
       } else if (this.formData.Pattern == 'Toss') {
         xg = xg * 0.65;
+      } else if (this.formData.Pattern == 'Free') {
+        xg = xg * 2.2;
+      } else if (this.formData.Pattern == 'SetPiece') {
+        xg = xg * 0.65;
       }
 
       if (this.formData.Breakway == 'Yes') {
@@ -131,11 +135,11 @@ export class PractiseShotComponent implements OnInit {
       }
 
       if (this.formData.BigChange == 'Yes' ) {
-        xg = xg * 1.3;
+        xg = xg * 1.5;
       }
 
       if (this.formData.NoChange == 'Yes' ) {
-        xg = xg * 0.75;
+        xg = xg * 0.5;
       }
 
       xg = Math.round(xg * 1000) / 1000;

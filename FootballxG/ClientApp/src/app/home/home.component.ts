@@ -101,6 +101,10 @@ export class HomeComponent implements OnInit {
       xg = xg * 0.65;
     } else if (this.Pattern == 'Toss') {
       xg = xg * 0.65;
+    } else if (this.Pattern == 'Free') {
+      xg = xg * 2.2;
+    } else if (this.Pattern == 'SetPiece') {
+      xg = xg * 0.65;
     }
 
     if (this.Cross == 'Yes') {
@@ -108,11 +112,11 @@ export class HomeComponent implements OnInit {
     }
 
     if (this.BigChange == 'Yes' ) {
-      xg = xg * 1.3;
+      xg = xg * 1.5;
     }
 
     if (this.NoChange == 'Yes' ) {
-      xg = xg * 0.75;
+      xg = xg * 0.5;
     }
 
     xg = Math.round(xg * 1000) / 1000;
