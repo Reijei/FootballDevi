@@ -21,22 +21,22 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent }
     ]
   },
-  {path:'home',component:HomeComponent},
-  {path: 'teams', component: TeamsComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  { path: 'teams', component: TeamsComponent, canActivate: [AuthGuard]},
   {path: 'team', children: [
     {path: '', component: TeamComponent},
     {path: 'edit/:id', component: TeamComponent}
-  ]},
-  {path: 'matches', component: MatchesComponent},
+  ], canActivate: [AuthGuard]},
+  { path: 'matches', component: MatchesComponent, canActivate: [AuthGuard]},
   {path: 'match', children: [
     {path: '', component: MatchComponent},
     {path: 'edit/:id', component: MatchComponent}
-  ]},
-  {path: 'practises', component: PractisesComponent},
+  ], canActivate: [AuthGuard]},
+  { path: 'practises', component: PractisesComponent, canActivate: [AuthGuard]},
   {path: 'practise', children: [
     {path: '', component: PractiseComponent},
     {path: 'edit/:id', component: PractiseComponent}
-  ]},
+  ], canActivate: [AuthGuard]},
 ];
 
 @NgModule({
