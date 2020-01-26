@@ -127,7 +127,8 @@ updateTotalAway() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
-    dialogConfig.width="1500px";
+    dialogConfig.width = "1500px";
+    dialogConfig.width = "90%";
     dialogConfig.data = {shotIndex, MatchID, TeamName};
     this.dialog.open(ShotComponent, dialogConfig).afterClosed().subscribe(res => {
       this.afterCloseHome();
