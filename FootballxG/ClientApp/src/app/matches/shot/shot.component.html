@@ -83,10 +83,11 @@
       <div class="row">
         <div class="col-sm">
           <div class="side-inputs">
-            <label>Breakway</label>
+            <label>Cross</label>
             <select (change)="calculateXg()" name="Breakway" #Breakway="ngModel" [(ngModel)]="formData.Breakway" class="form-control" maxlength="10">
               <option value="">-Select-</option>
-              <option value="Yes">Yes</option>
+              <option value="Header">Header cross</option>
+              <option value="Foot">Foot cross</option>
               <option value="No">No</option>
             </select>
           </div>

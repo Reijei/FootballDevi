@@ -107,8 +107,10 @@ export class HomeComponent implements OnInit {
       xg = xg * 0.65;
     }
 
-    if (this.Cross == 'Yes') {
-      xg = xg * 0.75;
+    if (this.Cross == 'Header') {
+      xg = xg * 0.9;
+    } if (this.Cross == 'Foot') {
+      xg = xg * 0.8;
     }
 
     if (this.BigChange == 'Yes' ) {
