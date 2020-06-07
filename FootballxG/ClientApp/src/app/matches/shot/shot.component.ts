@@ -109,7 +109,7 @@ export class ShotComponent implements OnInit {
     calculateXg() {
       let dist = Math.sqrt(Math.pow(this.formData.PositionX, 2) + Math.pow(this.formData.PositionY, 2));
       let partMultiplier = 7.1;
-      if(this.part == "Head") {
+      if(this.formData.BodyPart == "Head") {
         partMultiplier = 4.4;
       }
       let xg = Math.exp(-dist / partMultiplier);
